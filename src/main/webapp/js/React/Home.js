@@ -9,7 +9,21 @@ function Home() {
                 any other vending machines other people have found. Using Google Maps API, you can also find your distances
                 and routes to the coordinates!</p>
             <img id="Vending" src="pics/Vending4.png" title="Vending Machine"></img>
-
+            <p>
+                Found a <b>vending machine?</b> Add it to the map for our other users to find!
+            </p> 
+            <br />
+            <br />
+            <br />
+            <p>
+                If you would like to see my "Hello World" API open up in a new tab,
+                click <a href="hello" target="_blank">here</a>.
+            </p>
+            <p>
+                If you would like to see my "Goodbye World" API open up in a new tab,
+                click <a href="goodbye">here</a>.
+            </p>
+            
         </div>
     );
 }

@@ -1,13 +1,15 @@
+"use strict";
 function PlainBlog() {
     var ele = document.createElement("div");
     var content = `
     <div id=blog>
+    <h1>Blog</h1>
     <div id="hw1">
-        <h2 id="blog1">Blog</h2>
+        <h3 id="HomePage Hw">Homepage HW Blog</h3>
         <p>This blog is still underway. However you can check out the
             <a class="ContentLinks" href="blog" target="_blank">server-side blog</a>
             to find out upcoming content.
-            Click <a class = "ContentLinks" href="CIS3308 Lab2.pdf" target="_blank">here</a> to view doc form Lab02, or <a class="ContentLinks" href="CIS3308 HW02.pdf">HW02.</a>
+            Click <a class = "ContentLinks" href="pics/CIS3308 Lab2.pdf" target="_blank">here</a> to view doc form Lab02, or <a class="ContentLinks" href="pics/CIS3308 HW02.pdf" target="_blank">HW02.</a>
         </p>
         <p>The custom datatable will basically contain each user entry of a new vending machine that is found and all
             its relevant information.</p>
@@ -56,8 +58,19 @@ function PlainBlog() {
         </p>
     </div>
     <div id="SPA_HW">
-        <h3>Single Page Application HW</h3>
-        <p> ADD TEXT</p>
+        <h3>Single Page Application HW Blog</h3>
+        <p>
+            There wasn't anything particularly "too" easy about this homework other than copy and pasting that was allowed.
+            Being able to reference how to use the react elements and routing was very helpful though as it was just merely
+            adapting it to my code.
+            The challenging part was honestly the styling. It was tough having to work with multiple css files and having them 
+            inherit and overlap. It was also tough because you have to keep in mind the html elements that are now in js files
+            so it's just more to keep track of.
+            The valuable part was being able to see how react works and how it can be used to create a single page application.
+            The routing was very interesting and being able to see the xml in action. This homework was great for debugging though
+            because I found myself having to do a decent amount. I think this module and the react are probably the most valuable 
+            to me so far because they seem like the most practical and useful.
+        </p>
     </div>
 </div> 
     `;

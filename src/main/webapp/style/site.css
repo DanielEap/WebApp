@@ -10,10 +10,9 @@ body {
     margin: 0;
 
     background-color: #9BD7EF;
-    /* background-color: #E5DDE3; */
     color: black;
     /* color of font */
-    font-family:'Times New Roman', Times, serif;
+    font-family: 'Times New Roman', Times, serif;
     /* "no tail" font is more readable for small font */
 }
 
@@ -44,9 +43,14 @@ body {
     padding: 0.25rem;
 }
 
+#title {
+    font-size: 2rem;
+    margin-left: 2rem;
+}
+
 #pageTitle {
     font-size: 3rem;
-    /* white-space: nowrap; */
+    white-space: nowrap;
 }
 
 #nav {
@@ -56,12 +60,10 @@ body {
 }
 
 #nav a {
-    /* this selector applies to links within #nav */
+    white-space: nowrap;
     text-decoration: none;
-    /* Do not want links in "nav" to be underlined */
-    color: #C8C8C8;
-    /* light gray: to specify color for links, you have to style the "a" tag */
 }
+
 
 #content {
     /* Add padding top to prevent titleNav from covering up top of content. 
@@ -73,21 +75,21 @@ body {
     /* prevent the top of the content from getting hidden under the fixed titleNav */
     padding-bottom: 2rem;
     /* prevent the the bottom of the content from getting hidden under the fixed footer */
-    margin-top:7rem;
-    margin-bottom:2.5rem;
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
     font-size: 1.2rem;
-    
+
 }
 
 #content img {
     /* this selector applies to images within #content */
-    width:20%;
-    height:20%;
+    width: 20%;
+    height: 20%;
     border-radius: 0.5rem;
-    padding:0.75rem;
+    padding: 0.75rem;
     /* box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.6); */
-   
-   
+
+
 }
 
 #footer {
@@ -105,29 +107,44 @@ body {
     text-align: center;
     padding: 0.5rem;
 }
-#Vending{
-    float:right;
+
+#Vending {
+    float: right;
 }
-#Map{
-    float:right;
+
+#Map {
+    float: right;
 }
+
 /* desktop only */
 @media only screen and (min-width: 40rem) {
 
-    
+
     #content {
         margin-top: 4.5rem;
-     
+
     }
 
     #titleNav {
-     
+
         flex-direction: row;
         justify-content: space-between;
-  
+
     }
 }
-.ContentLinks:hover{
-    color:red;
+
+.ContentLinks:hover {
+    color: red;
 }
 
+p a:visited {
+    color: purple;
+}
+
+p a:hover {
+    color: red;
+}
+
+p {
+    margin-right: 30%;
+}

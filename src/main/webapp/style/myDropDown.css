@@ -4,19 +4,19 @@
 */
 
 
-
+/* currently have the site.css file below this so its #nav a takes priority */
 .dropDown {
     background-color: rgb(218, 226, 162);
     border-radius: 0.5rem;
-    padding: 0.5rem;
-    color:rgb(34, 159, 67)
+    padding: 0.6rem;
+    color: rgb(145, 32, 64)
 }
 
-.dropDown:hover{
+.dropDown:hover {
     background-color: rgb(218, 226, 162);
     border-radius: 0.5rem;
     padding: 0.5rem;
-    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 17, 128, 0.5);
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(245, 245, 245, 0.5);
     /* Change mouse pointer when the user hovers over a dropDown element */
     cursor: pointer;
     text-decoration: underline;
@@ -31,9 +31,7 @@
 }
 
 .dropDown .dropContent {
-    box-shadow: 0.25rem 0.25rem 0.5rem rgba(0, 17, 128, 0.5);
+    box-shadow: 0.25rem 0.25rem 0.5rem rgba(255, 255, 255, 0.5);
     /* position absolute aligns with its 1st non static parent (.dropDown)  */
 
 }
-
-

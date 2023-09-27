@@ -13,9 +13,6 @@ To follow the CSS naming convention,
 
 */
 
-.blog {  /* applies to any dom element that's classed "obj" */
-    background-color: lightgreen; /*#AACCDD; */
-}
 
 
 .blog h4 { /* applies to any "h2" tag that's in an "obj" dom element */
