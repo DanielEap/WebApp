@@ -1,0 +1,1 @@
+//non react content generating function

@@ -1,0 +1,1 @@
+//non-react reusable function
