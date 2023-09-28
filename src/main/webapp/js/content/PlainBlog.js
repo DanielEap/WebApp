@@ -72,6 +72,18 @@ function PlainBlog() {
             to me so far because they seem like the most practical and useful.
         </p>
     </div>
+    <div id="Component_HW">
+        <h3>Component HW Blog</h3>
+        <p>
+            This one was definitely a little bit more challenging than previous ones. I spent a lot of time because I forgot to include 
+            text/babel. I don't think creating the functions was really all that challenging though being able to reference the sample code,
+            It was just making sure to keep it clean so I could understand the flow of the code. However, there were times when the instructions 
+            were a little unclear, in particular when we had to call our list functions, I spent a decent amount of time trying to understand the prompts.
+            One thing that I did spend a lot of time on was actually inserting the code into the html files. 
+            The example code in the document for the Routes worked for my react function, but would not work for my 
+            JS templating one. I eventually did some StackOverflow research and found that I had to use render(). Although, it did not follow what was in the document,
+            this allowed for it to work.
+        </p>
 </div> 
     `;
     ele.innerHTML = content;

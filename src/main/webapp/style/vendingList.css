@@ -1,0 +1,32 @@
+.vendingList {
+    background-color: lightgrey;
+    border-radius: 0.5rem;
+    padding:0.5rem;
+    padding-bottom:1rem;
+    margin:0.5rem;
+    position: relative;
+}
+.vendingList h2 {
+    color:black;
+    z-index: 100;
+    margin:0rem;
+}
+.vendingList img{
+    width:5% ;
+    height:5% ;
+    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.5);
+}
+
+.vendingList .vending img {
+    width:10% ;
+    height: 10% ;
+    float:right ;
+}
+.vendingList .vending {
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+

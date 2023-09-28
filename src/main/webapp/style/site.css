@@ -81,13 +81,12 @@ body {
 
 }
 
-#content img {
-    /* this selector applies to images within #content */
+#root img {
+  
     width: 20%;
     height: 20%;
     border-radius: 0.5rem;
     padding: 0.75rem;
-    /* box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.6); */
 
 
 }
@@ -112,6 +111,18 @@ body {
     float: right;
 }
 
+#ReactComponents{
+    padding: 1rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    /* padding-top: .5rem; */
+    /* prevent the top of the content from getting hidden under the fixed titleNav */
+    padding-bottom: 2rem;
+    /* prevent the the bottom of the content from getting hidden under the fixed footer */
+    margin-top: 7rem;
+    margin-bottom: 2.5rem;
+    font-size: 1.2rem;
+}
 #Map {
     float: right;
 }

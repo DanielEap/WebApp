@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="style/dropDown.css">
     <link rel="stylesheet" href="style/myDropDown.css">
     <link rel="stylesheet" href="style/site.css">
+    <link rel="stylesheet" href="style/vendingList.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vending Machine Locator</title>
@@ -22,6 +23,7 @@
 
     <!-- This lets you use React Routing -->
     <script src='https://unpkg.com/react-router-dom@5.0.0/umd/react-router-dom.min.js'></script>
+
     <style>
 
     </style>
@@ -29,6 +31,16 @@
 
 <body>
     <div id="root"></div>
+    <div id="JSTemplating">
+
+        <div id="content"></div>
+    </div>
+    <div id="ReactComponents">
+
+        <div id="react1"></div>
+        <div id="react2"></div>
+        <div id="react3"></div>
+    </div>
 
     <!-- It's best to put the reusable JS first in case any other JS code 
              needs to reference them. -->
@@ -38,11 +50,20 @@
     <script src="js/content/PlainBlog.js"></script>
 
     <!-- Because these React components all use JSX, you need the type="text=babel" for each -->
-    <script type="text/babel" src="js/React/Home.js"></script>
-    <script type="text/babel" src="js/React/ConvertEle.js"></script>
+    <script type="text/babel" src="React/Home.js"></script>
+    <script type="text/babel" src="React/ConvertEle.js"></script>
+    <script src="js/content/VendingListContent.js"></script>
+    <script src="js/reusable/MakeVendingList.js"></script>
+    <script src="React/reusable/MakeVendingListR.js" type="text/babel"></script>
+    <script src="React/content/VendingListContentR.js" type="text/babel"></script>
 
-
-
+    <!-- <script>
+     VendingListContent();
+    </script> -->
+    <!-- <script type="text/babel">
+           
+        VendingListContentR();
+    </script> -->
     <script type="text/babel">
 
         "use strict";
@@ -75,7 +96,9 @@
                             <div class="dropHeader">Search</div>
                             <div class="dropContent">
                                 <Link to="/home">Home</Link> <br />
-                                <Link to="/blog">Blog</Link>
+                                <Link to="/blog">Blog</Link> <br />
+                                <Link to="/vendingListJS">Vending List JS</Link><br />
+                                <Link to="/vendingListR">Vending List R</Link>
                             </div>
                         </div>
                     </div>
@@ -85,6 +108,9 @@
                     <Route path="/" exact component={Home} />
                     <Route path="/home" component={Home} />
                     <Route path="/blog" component={ConvertBlog} />
+                    <Route path="/vendingListR" component={VendingListContentR} />
+                    <Route path="/vendingListJS" render={() => VendingListContent()} />
+
                 </div>
 
                 <div id="footer">
@@ -101,6 +127,9 @@
             // no React) into a React component that can be shown thru React Routing.
             return <ConvertEle ele={PlainBlog()} />
         }
+        // function ConvertVendingList(){
+        //     return <ConvertEle ele={VendingListContent()} />
+        // }
 
     </script>
 
