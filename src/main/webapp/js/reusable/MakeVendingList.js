@@ -51,6 +51,7 @@ function MakeVendingList({vendingList=null, title="Vending Listing",image="pics/
                 reviewClassShow.style.display = "none";
             }
         }
+        console.log(typeof(vendingObj));
         return vendingObj;
     }
 
@@ -60,8 +61,9 @@ function MakeVendingList({vendingList=null, title="Vending Listing",image="pics/
 
 
     for(var vendingObj of vendingList){
+       
         vendingListComp.appendChild(MakeVending(vendingObj));
     }
-
+    console.log("vendingListComp " + typeof(vendingListComp));
     return vendingListComp;
 }

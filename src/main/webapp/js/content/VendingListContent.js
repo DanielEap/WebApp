@@ -1,7 +1,7 @@
 //non react content generating function
 "use strict"
 function VendingListContent() {
-    var destEle = document.getElementById("content");
+    var destEle = document.createElement("div");
 
     var FoodVendingList = [
         { vendingImage: "pics/FoodVending/1.jpg", latitude: 39.9526, longitude: -75.1652, description: "This is a food vending machine", review: 5 },
@@ -54,4 +54,5 @@ function VendingListContent() {
     //call the make list function but provide an empty object (no object list property, no other properties )
     var test2VendingListComp = MakeVendingList({});
     destEle.appendChild(test2VendingListComp);
+    return destEle;
 }

@@ -52,8 +52,9 @@
     <!-- Because these React components all use JSX, you need the type="text=babel" for each -->
     <script type="text/babel" src="React/Home.js"></script>
     <script type="text/babel" src="React/ConvertEle.js"></script>
-    <script src="js/content/VendingListContent.js"></script>
     <script src="js/reusable/MakeVendingList.js"></script>
+    <script src="js/content/VendingListContent.js"></script>
+  
     <script src="React/reusable/MakeVendingListR.js" type="text/babel"></script>
     <script src="React/content/VendingListContentR.js" type="text/babel"></script>
 
@@ -108,8 +109,9 @@
                     <Route path="/" exact component={Home} />
                     <Route path="/home" component={Home} />
                     <Route path="/blog" component={ConvertBlog} />
+                    <Route path="/vendingListJS" component={() => <ConvertEle ele={VendingListContent()} /> } />
                     <Route path="/vendingListR" component={VendingListContentR} />
-                    <Route path="/vendingListJS" render={() => VendingListContent()} />
+                
 
                 </div>
 
@@ -127,9 +129,9 @@
             // no React) into a React component that can be shown thru React Routing.
             return <ConvertEle ele={PlainBlog()} />
         }
-        // function ConvertVendingList(){
-        //     return <ConvertEle ele={VendingListContent()} />
-        // }
+        function ConvertVendingList(){
+            return <ConvertEle ele={VendingListContent()} />
+        }
 
     </script>
 
