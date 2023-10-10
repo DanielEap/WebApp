@@ -9,7 +9,7 @@ function PlainBlog() {
         <p>This blog is still underway. However you can check out the
             <a class="ContentLinks" href="blog" target="_blank">server-side blog</a>
             to find out upcoming content.
-            Click <a class = "ContentLinks" href="pics/CIS3308 Lab2.pdf" target="_blank">here</a> to view doc form Lab02, or <a class="ContentLinks" href="pics/CIS3308 HW02.pdf" target="_blank">HW02.</a>
+            Click <a class = "ContentLinks" href="assets/CIS3308 Lab2.pdf" target="_blank">here</a> to view doc form Lab02, or <a class="ContentLinks" href="assets/CIS3308 HW02.pdf" target="_blank">HW02.</a>
         </p>
         <p>The custom datatable will basically contain each user entry of a new vending machine that is found and all
             its relevant information.</p>
