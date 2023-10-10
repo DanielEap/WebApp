@@ -85,11 +85,13 @@ function PlainBlog() {
             this allowed for it to work.
         </p>
     </div>
-    <div id="WebAPI_HW>
+    <div id="WebAPI_HW">
         <h3>Web API HW Blog</h3>
         <p>
             To see my <strong>List Users API</strong> open up in a new tab,
             click <a href="webUser/getAll" target="_blank">here</a>. 
+            To see my <strong>List Vending API</strong> open up in a new tab,
+click <a href="tblVendingMachine/getAll" target="_blank">here</a>. 
         </p>
     </div>
 </div> 
