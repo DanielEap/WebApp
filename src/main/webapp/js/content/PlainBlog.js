@@ -91,7 +91,8 @@ function PlainBlog() {
             To see my <strong>List Users API</strong> open up in a new tab,
             click <a href="webUser/getAll" target="_blank">here</a>. 
             To see my <strong>List Vending API</strong> open up in a new tab,
-click <a href="tblVendingMachine/getAll" target="_blank">here</a>. 
+            click <a href="tblVendingMachine/getAll" target="_blank">here</a>.
+            Click <a target="_blank" href="assets/CIS3308 HW05.pdf">here</a> to see my Web API error document 
         </p>
     </div>
 </div> 
