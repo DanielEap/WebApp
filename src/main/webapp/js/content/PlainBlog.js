@@ -84,6 +84,14 @@ function PlainBlog() {
             JS templating one. I eventually did some StackOverflow research and found that I had to use render(). Although, it did not follow what was in the document,
             this allowed for it to work.
         </p>
+    </div>
+    <div id="WebAPI_HW>
+        <h3>Web API HW Blog</h3>
+        <p>
+            To see my <strong>List Users API</strong> open up in a new tab,
+            click <a href="webUser/getAll" target="_blank">here</a>. 
+        </p>
+    </div>
 </div> 
     `;
     ele.innerHTML = content;
