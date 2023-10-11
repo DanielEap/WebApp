@@ -57,7 +57,7 @@
   
     <script src="React/reusable/MakeVendingListR.js" type="text/babel"></script>
     <script src="React/content/VendingListContentR.js" type="text/babel"></script>
-    <script src="React/content/Blog.js" type="text/babel"></script>
+
     <!-- <script>
      VendingListContent();
     </script> -->
@@ -91,7 +91,7 @@
                             <Link to="/home">Home</Link>
                         </div>
                         <div class="dropDown">
-                            <Link to="/blog">Blog (React)</Link>
+                            <Link to="/blog">Blog (not React)</Link>
                         </div>
                         <div class="dropDown">
                             <div class="dropHeader">Search</div>
@@ -108,7 +108,7 @@
                 <div id="content">
                     <Route path="/" exact component={Home} />
                     <Route path="/home" component={Home} />
-                    <Route path="/blog" component={Blog} />
+                    <Route path="/blog" component={ConvertBlog} />
                     <Route path="/vendingListJS" component={() => <ConvertEle ele={VendingListContent()} /> } />
                     <Route path="/vendingListR" component={VendingListContentR} />
                 
@@ -124,14 +124,14 @@
 
         ReactDOM.render(<App />, document.getElementById('root'));
 
-        // function ConvertBlog() {
-        //     // ConvertEle converts a Plain DOM element (e.g., one created with plain JS
-        //     // no React) into a React component that can be shown thru React Routing.
-        //     return <ConvertEle ele={PlainBlog()} />
-        // }
-        // function ConvertVendingList(){
-        //     return <ConvertEle ele={VendingListContent()} />
-        // }
+        function ConvertBlog() {
+            // ConvertEle converts a Plain DOM element (e.g., one created with plain JS
+            // no React) into a React component that can be shown thru React Routing.
+            return <ConvertEle ele={PlainBlog()} />
+        }
+        function ConvertVendingList(){
+            return <ConvertEle ele={VendingListContent()} />
+        }
 
     </script>
 
