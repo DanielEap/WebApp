@@ -57,6 +57,7 @@
   
     <script src="React/reusable/MakeVendingListR.js" type="text/babel"></script>
     <script src="React/content/VendingListContentR.js" type="text/babel"></script>
+    <script src="React/content/Blog.js" type="text/babel"></script>
 
     <!-- <script>
      VendingListContent();
@@ -91,7 +92,7 @@
                             <Link to="/home">Home</Link>
                         </div>
                         <div class="dropDown">
-                            <Link to="/blog">Blog (not React)</Link>
+                            <Link to="/blog">Blog (React)</Link>
                         </div>
                         <div class="dropDown">
                             <div class="dropHeader">Search</div>
@@ -108,7 +109,7 @@
                 <div id="content">
                     <Route path="/" exact component={Home} />
                     <Route path="/home" component={Home} />
-                    <Route path="/blog" component={ConvertBlog} />
+                    <Route path="/blog" component={Blog} />
                     <Route path="/vendingListJS" component={() => <ConvertEle ele={VendingListContent()} /> } />
                     <Route path="/vendingListR" component={VendingListContentR} />
                 

@@ -11,7 +11,8 @@ public class StringData {
     public String acceptsEPayments = ""; //tinyInt
     public String review = ""; // double
     public String webUserID = ""; //int
-    public String vendingTypeID = ""; //int
-    public String errorMsg = "";      // not actually in the database, used by the app 
+    public String vendingTypeDesc = ""; //varchar
+    public String userEmail = ""; //varchar
+    public String errorMsg = "";      // not actually in the database, use
                                       // to convey success or failure.    
 }

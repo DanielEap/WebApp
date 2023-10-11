@@ -46,8 +46,7 @@ public class TblVendingMachineControllerSimple {
                             sd.acceptsEPayments = String.valueOf(results.getBoolean("acceptsEPayments")); // convert to string
                             sd.review = String.valueOf(results.getDouble("review")); // convert to string
                             sd.webUserID = String.valueOf(results.getInt("web_user_id")); // convert to string
-                            sd.vendingTypeID = String.valueOf(results.getInt("vending_type_id")); // convert to string
-                            
+                           
                         } catch (Exception e) {
                             msg = "Exception thrown while extracting data from result set. Error is: "
                                     + e.getMessage();
