@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="style/myDropDown.css">
     <link rel="stylesheet" href="style/site.css">
     <link rel="stylesheet" href="style/vendingList.css">
+    <link rel="stylesheet" href="style/clickSort.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vending Machine Locator</title>
@@ -59,6 +60,14 @@
     <script src="React/content/VendingListContentR.js" type="text/babel"></script>
     <script src="React/content/Blog.js" type="text/babel"></script>
 
+    <script src="React/reusable/ajax_alt.js"></script>
+    <script src="React/reusable/copyList.js"></script>
+    <script src="React/reusable/jsSort.js"></script>
+    <script src="React/reusable/sortOrder.js"></script>
+    <script src="React/reusable/filterObjList.js"></script>
+    
+    <script src="React/content/ShowUsers.js" type="text/babel"></script>
+    <script src="React/reusable/MakeShowUsers.js" type="text/babel"></script>
     <!-- <script>
      VendingListContent();
     </script> -->
@@ -100,7 +109,9 @@
                                 <Link to="/home">Home</Link> <br />
                                 <Link to="/blog">Blog</Link> <br />
                                 <Link to="/vendingListJS">Vending List JS</Link><br />
-                                <Link to="/vendingListR">Vending List R</Link>
+                                <Link to="/vendingListR">Vending List R</Link><br />
+                                <Link to="/showUsers">Show Users</Link><br />
+                                <Link to="/showVending">Show Vending</Link><br />
                             </div>
                         </div>
                     </div>
@@ -112,7 +123,7 @@
                     <Route path="/blog" component={Blog} />
                     <Route path="/vendingListJS" component={() => <ConvertEle ele={VendingListContent()} /> } />
                     <Route path="/vendingListR" component={VendingListContentR} />
-                
+                    <Route path="/showUsers" component={ShowUsers} />
 
                 </div>
 

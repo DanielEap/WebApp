@@ -1,5 +1,3 @@
-//react reusable
-
 function MakeVendingListR({ vendingList = null, title = "Vending Listing", image = "pics/Vending3.jpg" }) {
     if (vendingList == null) {
         return (
@@ -10,11 +8,11 @@ function MakeVendingListR({ vendingList = null, title = "Vending Listing", image
     }
 
     function MakeVendingR({ vendingObj }) {
-        const [review, setReview] = React.useState(5);
-        const [description, setDescription] = React.useState("");
-        const [latitude, setLatitude] = React.useState(90);
-        const [longitude, setLongitude] = React.useState(180);
-        const [vendingImage, setVendingImage] = React.useState("pics/Vending4.png");
+        const [review, setReview] = React.useState(vendingObj.review);
+        const [description, setDescription] = React.useState(vendingObj.description);
+        const [latitude, setLatitude] = React.useState(vendingObj.latitude);
+        const [longitude, setLongitude] = React.useState(vendingObj.longitude);
+        const [vendingImage, setVendingImage] = React.useState(vendingObj.vendingImage);
         const [showReview, setShowReview] = React.useState(false);
         const vendingInfo = React.useRef(null);
         const reviewClassShow = React.useRef(null);
