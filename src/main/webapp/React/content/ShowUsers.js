@@ -1,8 +1,8 @@
 "use strict"
 function ShowUsers(){
-    var title = "Users";
+    var title = "Users Table";
     ReactDOM.render(
-        <MakeShowUsers title={title} />,
+        <MakeShowUsers titleText={title} />,
         document.getElementById("react1")
     )
 }

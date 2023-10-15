@@ -105,6 +105,15 @@ about this module (LA and HW) */}
                     before so it was nice being able to see how it works and explore the java libraries.
                 </p>
             </div>
+            <div id="AJAX_HW">
+                <h3>AJAX HW Blog</h3>
+                <p>
+                    The work this week was relatively easy and simple to understand and implement. The only tough thing was the homework as there definitely wasn't
+                    as much explicit direction compared to previous homeworks. But that is okay, it is expected as more knowledge should allow
+                    for more freedom.The AJAX quiz was nice to take because of the questions it asked. I got to learn a lot of the intricacies of AJAX
+                    and how it works. Things like httpRequest, readystate and other things related were really interesting and valuable.
+                </p>
+                </div>
         </div>
     );
 }

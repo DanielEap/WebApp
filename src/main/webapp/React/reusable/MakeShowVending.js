@@ -1,7 +1,6 @@
-function MakeShowUser({titleText = "Default Title"}){
+function MakeShowVending({titleText = "Default Vending"}){
     const UserSortAndFilter = () => {
 
-        console.log("UserSortTable running !!");
     
         // Tell React that 'items' (an array of objects) is a state variable 
         // that (when changed by the React provided setter function 'setItems')
@@ -36,17 +35,14 @@ function MakeShowUser({titleText = "Default Title"}){
                 ajax_alt(
     
                     //NOTE: this only has the ../ because the code is in a subfolder... 
-                    "../webUser/getAll", // URL for AJAX call to invoke
+                    "../tblVendingMachine/getAll", // URL for AJAX call to invoke
     
                     function (dbList) {   // ajax_alt calls this function if ajax call successful 
                         setIsLoading(false);
-                    
                         if (dbList.dbError.length > 0) { // ajax can be successful but still report a db error.
                             setError("Database Error. " + dbList.dbError);
                         } else {
-                            console.log("in AjaxUserTable here is web user list (next line):");
-                            console.log(dbList.webUserList);
-                            setItems(dbList.webUserList);
+                            setItems(dbList.vendingList)
                         }
                     },
                     function (errorMsg) { // ajax_alt calls this function if ajax call fails
@@ -95,14 +91,14 @@ function MakeShowUser({titleText = "Default Title"}){
         // NOTE: onClick in react has a capital C, unlike regular JS onclick (no capital C).
         return (
             <div className="clickSort">
-                <h3>(Sortable) Web User List
+                <h3>(Sortable) Vending List
                 <input value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
                     &nbsp; <button onClick={() => doFilter()}>Search</button>
                 </h3>
                 <table>
                     <thead>
                         <tr>
-                            <th onClick={() => sortByProp("userEmail", "text")} >
+                            {/* <th onClick={() => sortByProp("userEmail", "text")} >
                                 <img src="assets/sortDown.png" />Email
                             </th>
                             <th className="textAlignCenter">Image</th>
@@ -116,6 +112,33 @@ function MakeShowUser({titleText = "Default Title"}){
                             </th>
                             <th onClick={() => sortByProp("userRoleType", "text")}>
                                 <img src="assets/sortDown.png" />Role
+                            </th> */}
+                            {/* <th onClick={() => sortByProp("ID", "number")} >
+                                <img src="assets/sortDown.png" />ID
+                            </th> */}
+                            <th onClick={() => sortByProp("ticketID", "text")}>
+                                <img src="assets/sortDown.png" />Ticket ID
+                            </th>
+                            <th onClick={() => sortByProp("ticketDate", "date")}>
+                                <img src="assets/sortDown.png" />Ticket Date
+                            </th>
+                            <th className="textAlignCenter">
+                                Image
+                            </th>
+                            <th onClick={() => sortByProp("latitude", "number")}>
+                                <img src="assets/sortDown.png" />Latitude
+                            </th>
+                            <th onClick={() => sortByProp("longitude", "number")}>
+                                <img src="assets/sortDown.png" />Longitude
+                            </th>
+                            <th onClick={() => sortByProp("description", "text")}>
+                                <img src="assets/sortDown.png" />Description
+                            </th>
+                            <th onClick={() => sortByProp("review", "number")}>
+                                <img src="assets/sortDown.png" />Review
+                            </th>
+                            <th onClick={() => sortByProp("vendingTypeDesc", "text")}>
+                                <img src="assets/sortDown.png" />Vending Type
                             </th>
                             <th>Error</th>
                         </tr>
@@ -123,13 +146,24 @@ function MakeShowUser({titleText = "Default Title"}){
                     <tbody>
                         {
                             items.map((listObj) =>
-                                <tr key={listObj.webUserId}>
-                                    <td>{listObj.userEmail}</td>
+                                <tr key={listObj.ID}>
+                                    {/* <td>{listObj.userEmail}</td>
                                     <td className="shadowImage textAlignCenter"><img src={listObj.userImage} /></td>
                                     <td className="textAlignCenter">{listObj.birthday}</td>
                                     <td className="textAlignRight">{listObj.membershipFee}</td>
                                     <td className="nowrap">{listObj.userRoleType}</td>
+                                    <td>{listObj.errorMsg}</td> */}
+                                    {/* <td>{listObj.ID}</td> */}
+                                    <td>{listObj.ticketID}</td>
+                                    <td>{listObj.ticketDate}</td>
+                                    <td className="shadowImage textAlignCenter"><img src={listObj.image} /></td>
+                                    <td className="textAlignRight">{listObj.latitude}</td>
+                                    <td className="textAlignRight">{listObj.longitude}</td>
+                                    <td>{listObj.description}</td>
+                                    <td className="textAlignRight">{listObj.review}</td>
+                                    <td>{listObj.vendingTypeDesc}</td>
                                     <td>{listObj.errorMsg}</td>
+
                                 </tr>
                             )
                         }
@@ -137,12 +171,12 @@ function MakeShowUser({titleText = "Default Title"}){
                 </table>
             </div>
         );
-                    
-        return(
-            <div>
-                <h1>{titleText}</h1>
-                <UserSortAndFilter />
-            </div>
-        )
+        
     };
+    return (
+        <div className="clickSort">
+            <h3>{titleText}</h3>
+            <UserSortAndFilter />
+        </div>
+    );
 }
