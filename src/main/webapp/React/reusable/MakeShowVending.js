@@ -35,7 +35,7 @@ function MakeShowVending({titleText = "Default Vending"}){
                 ajax_alt(
     
                     //NOTE: this only has the ../ because the code is in a subfolder... 
-                    "../tblVendingMachine/getAll", // URL for AJAX call to invoke
+                    "tblVendingMachine/getAll", // URL for AJAX call to invoke
     
                     function (dbList) {   // ajax_alt calls this function if ajax call successful 
                         setIsLoading(false);

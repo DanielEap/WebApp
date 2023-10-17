@@ -36,8 +36,8 @@ function MakeShowUsers({titleText = "Default Title"}){
                 ajax_alt(
     
                     //NOTE: this only has the ../ because the code is in a subfolder... 
-                    "../webUser/getAll", // URL for AJAX call to invoke
-    
+                    "webUser/getAll", // URL for AJAX call to invoke
+                    // "tomcat/fa23_3308_tuk31354/webUser/getAll",
                     function (dbList) {   // ajax_alt calls this function if ajax call successful 
                         setIsLoading(false);
                         if (dbList.dbError.length > 0) { // ajax can be successful but still report a db error.
