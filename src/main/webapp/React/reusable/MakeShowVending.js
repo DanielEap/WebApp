@@ -116,9 +116,9 @@ function MakeShowVending({titleText = "Default Vending"}){
                             {/* <th onClick={() => sortByProp("ID", "number")} >
                                 <img src="assets/sortDown.png" />ID
                             </th> */}
-                            <th onClick={() => sortByProp("ticketID", "text")}>
+                            {/* <th onClick={() => sortByProp("ticketID", "text")}>
                                 <img src="assets/sortDown.png" />Ticket ID
-                            </th>
+                            </th> */}
                             <th onClick={() => sortByProp("ticketDate", "date")}>
                                 <img src="assets/sortDown.png" />Ticket Date
                             </th>
@@ -154,7 +154,7 @@ function MakeShowVending({titleText = "Default Vending"}){
                                     <td className="nowrap">{listObj.userRoleType}</td>
                                     <td>{listObj.errorMsg}</td> */}
                                     {/* <td>{listObj.ID}</td> */}
-                                    <td>{listObj.ticketID}</td>
+                                    {/* <td>{listObj.ticketID}</td> */}
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter"><img src={listObj.image} /></td>
                                     <td className="textAlignRight">{listObj.latitude}</td>

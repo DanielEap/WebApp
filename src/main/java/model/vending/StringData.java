@@ -1,7 +1,7 @@
 package model.vending;
 public class StringData {
     public String ID = "";     // auto-increment primary key
-    public String ticketID = "";     // varChar 45, must be unique
+    // public String ticketID = "";     // varChar 45, must be unique
     public String ticketDate = "";  // DATE, NN
     public String image ="";        //varChar
     public String latitude = "";    // DECIMAL(9,7), NN

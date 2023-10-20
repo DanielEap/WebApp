@@ -22,7 +22,7 @@ public class VendingView {
         StringData sd = new StringData();
         
         try {
-            String sql = "SELECT ID, ticketID, ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user.web_user_id, vending_type_desc, user_email "
+            String sql = "SELECT ID,  ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user.web_user_id, vending_type_desc, user_email "
                     + "FROM tblVendingMachine, web_user, vending_type where tblVendingMachine.web_user_id = web_user.web_user_id and tblVendingMachine.vending_type_id = vending_type.vending_type_id "
                     + "ORDER BY ID";  // always order by something, not just random order.
             
@@ -39,7 +39,7 @@ public class VendingView {
                 // API output (JSON data) and/or you'll see it on the page in the UI.
 
                 sd.ID = Format.fmtInteger(results.getObject("ID"));
-                sd.ticketID = Format.fmtString(results.getObject("ticketID"));
+                // sd.ticketID = Format.fmtString(results.getObject("ticketID"));
                 sd.ticketDate = Format.fmtDate(results.getObject("ticketDate"));
                 sd.image = Format.fmtString(results.getObject("image"));
                 sd.latitude = Format.fmtDecimal(results.getObject("latitude"));

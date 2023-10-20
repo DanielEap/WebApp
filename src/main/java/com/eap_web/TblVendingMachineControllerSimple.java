@@ -26,7 +26,7 @@ public class TblVendingMachineControllerSimple {
                 String dbAndPass = "fa23_3308_tuk31354?user=tuk31354&password=yei3ohXa";
                 String url = "jdbc:mysql://localhost:3307/" + dbAndPass; // Assumes running from home
                 conn = DriverManager.getConnection(url);
-                String sql = "SELECT ID, ticketID, ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user_id, vending_type_id "
+                String sql = "SELECT ID, ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user_id, vending_type_id "
                     + "FROM tblVendingMachine "
                     + "ORDER BY ID";
                 try {
@@ -36,7 +36,7 @@ public class TblVendingMachineControllerSimple {
                         sd = new StringData();
                         try {
                             sd.ID = String.valueOf(results.getInt("web_user_id")); // convert to string
-                            sd.ticketID = results.getString("ticketID");
+                            // sd.ticketID = results.getString("ticketID");
                             sd.ticketDate = results.getString("ticketDate");
                             sd.image = results.getString("image");
                             sd.latitude = String.valueOf(results.getDouble("latitude")); // convert to string
