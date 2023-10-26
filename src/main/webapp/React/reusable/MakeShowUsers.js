@@ -96,7 +96,8 @@ function MakeShowUsers({titleText = "Default Title"}){
         // NOTE: onClick in react has a capital C, unlike regular JS onclick (no capital C).
         return (
             <div className="clickSort">
-                <h3><img src="assets/insert.png" onClick={callInsert}/> (Sortable) Web User List
+                <img id="add"src="assets/insert.png" onClick={callInsert}/>
+                <h3> (Sortable) Web User List
                 <input value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
                     &nbsp; <button onClick={() => doFilter()}>Search</button>
                 </h3>
@@ -126,7 +127,9 @@ function MakeShowUsers({titleText = "Default Title"}){
                             items.map((listObj) =>
                                 <tr key={listObj.webUserId}>
                                     <td>{listObj.userEmail}</td>
-                                    <td className="shadowImage textAlignCenter"><img src={listObj.userImage} /></td>
+                                    <td className="shadowImage textAlignCenter">
+                                        {listObj.userImage ? <img src={listObj.userImage} /> : null}
+                                    </td>
                                     <td className="textAlignCenter">{listObj.birthday}</td>
                                     <td className="textAlignRight">{listObj.membershipFee}</td>
                                     <td className="nowrap">{listObj.userRoleType}</td>

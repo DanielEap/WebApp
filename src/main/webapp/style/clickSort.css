@@ -7,6 +7,11 @@
     margin-top: 1rem; /* rem means size of capital M at the root */
     text-align: left;
 }
+.clickSort #add{
+    width: 1.5rem;
+    position: relative;
+    top: 0.25rem;
+}
 
 .clickSort th { /* style of td elements that are inside of a thead element */
     padding: 0.25rem;
