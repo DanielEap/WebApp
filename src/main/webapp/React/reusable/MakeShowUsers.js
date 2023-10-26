@@ -28,7 +28,9 @@ function MakeShowUsers({titleText = "Default Title"}){
         // If your list of state variables is empty, then whatever you put for the first 
         // param (of useEffect) gets run just once (and not every time any state variable 
         // changes. 
-    
+        function callInsert() {
+            window.location.hash = "#/userInsert";
+        }
         React.useEffect(
             () => {
     
@@ -94,7 +96,7 @@ function MakeShowUsers({titleText = "Default Title"}){
         // NOTE: onClick in react has a capital C, unlike regular JS onclick (no capital C).
         return (
             <div className="clickSort">
-                <h3>(Sortable) Web User List
+                <h3><img src="assets/insert.png" onClick={callInsert}/> (Sortable) Web User List
                 <input value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
                     &nbsp; <button onClick={() => doFilter()}>Search</button>
                 </h3>
