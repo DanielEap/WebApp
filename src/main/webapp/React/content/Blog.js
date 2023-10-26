@@ -114,7 +114,16 @@ about this module (LA and HW) */}
                     "/webUser/getAll" and "webUser/getAll", which took some console debugging. The AJAX quiz was nice to take because of the questions it asked. I got to learn a lot of the intricacies of AJAX
                     and how it works. Things like httpRequest, readystate and other things related were really interesting and valuable.
                 </p>
-                </div>
+            </div>
+            <div id="Insert_HW">
+                <h3>Insert HW Blog</h3>
+                <p>
+                    This week was definitely one of the more time consuming ones. It was a little challenging going through the lab and homework. It was a lot of file management 
+                    and just making sure that every file lined up correctly. Also because my data is different than what was given in the example, sometimes it was hard to debug as well.
+                    Additionally, since the project is getting so big, a really big painpoint is having to take care of all variables and making sure things between the server and client code
+                    are communicating correctly. On top of that, now having DOM elements in the correct spot as now there are more to consider.
+                </p>
+            </div>
         </div>
     );
 }
