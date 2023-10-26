@@ -225,78 +225,109 @@ const VendingInsertOrUpdate = (props) => {
                 <tr>
                     <td>Id</td>
                     <td>
-                        <input value={userData.webUserId} disabled />
+                        <input value={userData.ID} disabled />
                     </td>
                     <td className="error">
-                        {errorObj.webUserId}
+                        {errorObj.ID}
                     </td>
                 </tr>
                 <tr>
-                    <td>Email</td>
+                    <td>ticketDate</td>
                     <td>
-                        <input value={userData.userEmail} onChange=
-                            {e => setUserData(setProp(userData, "userEmail", e.target.value))}
+                        <input value={userData.ticketDate} onChange=
+                            {e => setUserData(setProp(userData, "ticketDate", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.userEmail}
+                        {errorObj.ticketDate}
                     </td>
                 </tr>
                 <tr>
-                    <td>Password</td>
+                    <td>image</td>
                     <td>
-                        <input type="password" value={userData.userPassword} onChange=
-                            {e => setUserData(setProp(userData, "userPassword", e.target.value))}
+                        <input value={userData.image} onChange=
+                            {e => setUserData(setProp(userData, "image", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.userPassword}
+                        {errorObj.image}
                     </td>
                 </tr>
                 <tr>
-                    <td>Re-enter Password</td>
+                    <td>latitude</td>
                     <td>
-                        <input type="password" value={userData.userPassword2} onChange=
-                            {e => setUserData(setProp(userData, "userPassword2", e.target.value))}
+                        <input type="latitude" value={userData.latitude} onChange=
+                            {e => setUserData(setProp(userData, "latitude", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.userPassword2}
+                        {errorObj.latitude}
                     </td>
                 </tr>
                 <tr>
-                    <td>Image</td>
+                    <td>longitude</td>
                     <td>
-                        <input value={userData.userImage} onChange=
-                            {e => setUserData(setProp(userData, "userImage", e.target.value))}
+                        <input value={userData.longitude} onChange=
+                            {e => setUserData(setProp(userData, "longitude", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.userImage}
+                        {errorObj.longitude}
                     </td>
                 </tr>
                 <tr>
-                    <td>Birthday</td>
+                    <td>Description</td>
                     <td>
-                        <input value={userData.birthday} onChange=
-                            {e => setUserData(setProp(userData, "birthday", e.target.value))}
+                        <input value={userData.description} onChange=
+                            {e => setUserData(setProp(userData, "description", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.birthday}
+                        {errorObj.description}
                     </td>
                 </tr>
                 <tr>
-                    <td>Membership Fee</td>
+                    <td>acceptsBillsAndCoins</td>
                     <td>
-                        <input value={userData.membershipFee} onChange=
-                            {e => setUserData(setProp(userData, "membershipFee", e.target.value))}
+                        <input value={userData.acceptsBillsAndCoins} onChange=
+                            {e => setUserData(setProp(userData, "acceptsBillsAndCoins", e.target.value))}
                         />
                     </td>
                     <td className="error">
-                        {errorObj.membershipFee}
+                        {errorObj.acceptsBillsAndCoins}
                     </td>
                 </tr>
+                <tr>
+                    <td>acceptsEPayments</td>
+                    <td>
+                        <input value={userData.acceptsEPayments} onChange=
+                            {e => setUserData(setProp(userData, "acceptsEPayments", e.target.value))}
+                        />
+                    </td>
+                    <td className="error">
+                        {errorObj.acceptsEPayments}
+                    </td>
+                </tr>
+                <tr>
+                    <td>review</td>
+                    <td>
+                        {/* create a select from 1 to 5 */}
+                        <select onChange=
+                            {e => setUserData(setProp(userData, "review", e.target.value))}
+                            value={userData.review}
+                        >
+                            {
+                                [1, 2, 3, 4, 5].map(review =>
+                                    <option key={review} value={review} >
+                                        {review}
+                                    </option>
+                                )
+                            }
+                        </select>
+                    </td>
+                </tr>
+                {/* get both the webuserid and vendingtypeid */}
+
                 <tr>
                     <td>Role</td>
                     <td>
