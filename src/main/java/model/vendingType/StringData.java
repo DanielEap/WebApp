@@ -15,8 +15,8 @@ public class StringData {
     public String errorMsg = "";
 
     public String toString() {
-        return "userRoleId: " + this.vendingTypeId
-                + ", userRoleType: " + this.vendingTypeDesc;
+        return "vendingTypeId: " + this.vendingTypeId
+                + ", vendingTypeDesc: " + this.vendingTypeDesc;
     }
 
 }

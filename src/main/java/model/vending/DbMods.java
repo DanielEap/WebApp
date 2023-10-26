@@ -37,14 +37,14 @@ public class DbMods {
         // }
         errorMsgs.ticketDate = Validate.dateMsg(inputData.ticketDate, false);
         errorMsgs.image = Validate.stringMsg(inputData.image, 300, false);
-        errorMsgs.latitude = Validate.decimalMsg(inputData.latitude, true);
-        errorMsgs.longitude = Validate.decimalMsg(inputData.longitude, true);
+        errorMsgs.latitude = Validate.latitudeMsg(inputData.latitude, true);
+        errorMsgs.longitude = Validate.longitudeMsg(inputData.longitude, true);
         errorMsgs.description = Validate.stringMsg(inputData.description, 300, false);
         errorMsgs.acceptsBillsAndCoins = Validate.booleanMsg(inputData.acceptsBillsAndCoins, false);
         errorMsgs.acceptsEPayments = Validate.booleanMsg(inputData.acceptsEPayments, false);
         errorMsgs.review = Validate.integerMsg(inputData.review, false);
-        errorMsgs.webUserID = Validate.integerMsg(inputData.webUserID, true);
-        errorMsgs.vendingTypeID = Validate.integerMsg(inputData.vendingTypeID, true);
+        errorMsgs.webUserId = Validate.integerMsg(inputData.webUserId, true);
+        errorMsgs.vendingTypeId = Validate.integerMsg(inputData.vendingTypeId, true);
         // errorMsgs.vendingTypeDesc = Validate.stringMsg(inputData.vendingTypeDesc, 45, false);
         return errorMsgs;
     } // validate
@@ -85,8 +85,8 @@ public class DbMods {
             pStatement.setBoolean(6, Validate.convertBoolean(inputData.acceptsBillsAndCoins));
             pStatement.setBoolean(7, Validate.convertBoolean(inputData.acceptsEPayments));
             pStatement.setInt(8, Validate.convertInteger(inputData.review));
-            pStatement.setInt(9, Validate.convertInteger(inputData.webUserID));
-            pStatement.setInt(10, Validate.convertInteger(inputData.vendingTypeID));
+            pStatement.setInt(9, Validate.convertInteger(inputData.webUserId));
+            pStatement.setInt(10, Validate.convertInteger(inputData.vendingTypeId));
             // here the SQL statement is actually executed
             int numRows = pStatement.executeUpdate();
 

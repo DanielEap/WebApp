@@ -62,7 +62,53 @@ public class Validate {
             return "Please enter a dollar amount";
         }
     } // decimalMsg()
+    public static String latitudeMsg(String val, boolean required) {
 
+        if (val == null) {
+            return "Validate.latitudeMsg(): Programmer error - should not be trying to validate null.";
+        }
+        if ((val.length() == 0) && !required) {
+            return "";  // Since this field is not required, empty string is valid user entry.
+        }
+        try {
+            java.math.BigDecimal convertedDecimal = new java.math.BigDecimal(val);
+            int scale = convertedDecimal.scale();
+            if (scale > 6) {
+                return "Please enter a latitude with no more than 6 decimal points";
+            }
+            double latitude = convertedDecimal.doubleValue();
+            if (latitude < -90 || latitude > 90) {
+                return "Please enter a valid latitude between -90 and 90";
+            }
+            return "";
+        } catch (Exception e) {
+            return "Please enter a valid latitude";
+        }
+    } // latitudeMsg()
+
+    public static String longitudeMsg(String val, boolean required) {
+
+        if (val == null) {
+            return "Validate.longitudeMsg(): Programmer error - should not be trying to validate null.";
+        }
+        if ((val.length() == 0) && !required) {
+            return "";  // Since this field is not required, empty string is valid user entry.
+        }
+        try {
+            java.math.BigDecimal convertedDecimal = new java.math.BigDecimal(val);
+            int scale = convertedDecimal.scale();
+            if (scale > 6) {
+                return "Please enter a longitude with no more than 6 decimal points";
+            }
+            double longitude = convertedDecimal.doubleValue();
+            if (longitude < -180 || longitude > 180) {
+                return "Please enter a valid longitude between -180 and 180";
+            }
+            return "";
+        } catch (Exception e) {
+            return "Please enter a valid longitude";
+        }
+    } // longitudeMsg(
     /* Convert "val" (String) to java.math.BigDecimal and return the converted BigDecimal. */
     public static java.math.BigDecimal convertDecimal(String val) {
 

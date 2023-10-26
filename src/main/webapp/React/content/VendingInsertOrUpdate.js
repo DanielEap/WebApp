@@ -28,14 +28,17 @@ const VendingInsertOrUpdate = (props) => {
     // is linked with a textbox for user input. 
     const [userData, setUserData] = React.useState(
         {
+            "ID": "",
+            "ticketDate": "",
+            "image": "",
+            "latitude": "",
+            "longitude": "",
+            "description": "",
+            "acceptsBillsAndCoins": "",
+            "acceptsEPayments": "",
+            "review": "",
             "webUserId": "",
-            "userEmail": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "userImage": "",
-            "birthday": "",
-            "membershipFee": "",
-            "userRoleId": "",
+            "vendingTypeId": "",
             "errorMsg": ""
         }
     );
@@ -43,19 +46,23 @@ const VendingInsertOrUpdate = (props) => {
     // State variable to hold the Role List (gotten from getRolesAPI.jsp) 
     // Role List populates the <select tag> for the UI.
     const [roleList, setRoleList] = React.useState([]);
-
+    const [webUserList, setWebUserList] = React.useState([]);
+    
     // Object (State Variable) that holds all the error messages - field level 
     // and form/record level (errorMsg).
     const [errorObj, setErrorObj] = React.useState(
         {
+            "ID": "",
+            "ticketDate": "",
+            "image": "",
+            "latitude": "",
+            "longitude": "",
+            "description": "",
+            "acceptsBillsAndCoins": "",
+            "acceptsEPayments": "",
+            "review": "",
             "webUserId": "",
-            "userEmail": "",
-            "userPassword": "",
-            "userPassword2": "",
-            "userImage": "",
-            "birthday": "",
-            "membershipFee": "",
-            "userRoleId": "",
+            "vendingTypeId": "",
             "errorMsg": ""
         }
     );
@@ -70,14 +77,20 @@ const VendingInsertOrUpdate = (props) => {
 
     const encodeUserInput = () => {
         var userInputObj = {
+            "ID": userData.ID,
+            "ticketDate": userData.ticketDate,
+            "image": userData.image,
+            "latitude": userData.latitude,
+            "longitude": userData.longitude,
+            "description": userData.description,
+            "acceptsBillsAndCoins": userData.acceptsBillsAndCoins,
+            "acceptsEPayments": userData.acceptsEPayments,
+            "review": userData.review,
             "webUserId": userData.webUserId,
-            "userEmail": userData.userEmail,
-            "userPassword": userData.userPassword,
-            "userPassword2": userData.userPassword2,
-            "userImage": userData.userImage,
-            "birthday": userData.birthday,
-            "membershipFee": userData.membershipFee,
-            "userRoleId": userData.userRoleId
+            "vendingTypeId": userData.vendingTypeId,
+            // "errorMsg": userData.errorMsg
+
+
         };
         console.log("userInputObj on next line");
         console.log(userInputObj);
@@ -119,19 +132,24 @@ const VendingInsertOrUpdate = (props) => {
                 function (obj) { // obj holds role list from AJAX call
                     console.log("vendingType/getAll Ajax success");
                     if (obj.dbError.length > 0) {  // db error trying to read role list
-                        setErrorObj(setProp(errorObj, "userRoleId", obj.dbError));
+                        setErrorObj(setProp(errorObj, "vendingTypeId", obj.dbError));
                     } else {
 
-                        // role fields (from role/getAll): userRoleId, userRoleType. 
-                        // sort alphabetically by role type (not by id)
                         obj.roleList.sort(function (a, b) {
+                            var order = 0;
+                            //console.log('comparing a '+ a.userRoleType+' with b '+b.userRoleType);
                             if (a.userRoleType > b.userRoleType) {
-                                return 1
+                                //console.log("a is bigger");
+                                order = 1;
                             } else {
-                                return -1;
+                                //console.log("b is bigger");
+                                order = -1;
                             }
-                            return 0;
+                            return order;
                         });
+                        // obj.roleList.sort(function (a, b) {
+                        //     return a.userRoleType > b.userRoleType
+                        // });
                         console.log('sorted role list on next line');
                         console.log(obj.roleList);
                         setRoleList(obj.roleList);
@@ -140,8 +158,8 @@ const VendingInsertOrUpdate = (props) => {
                         // but we need to set that field (to the id of the top role showing in the pick list) 
                         // so that if the user doesn't click the role pick list and then clicks save, things 
                         // will work. 
-                        setUserData(setProp(userData, "userRoleId", obj.roleList[0].userRoleId)); // FIX
-                        console.log("set initial role id for web_user to be "+obj.roleList[0].userRoleId);
+                        setUserData(setProp(userData, "vendingTypeId", obj.roleList[0].vendingTypeId)); // FIX
+                        console.log("set initial role id for web_user to be " + obj.roleList[0].vendingTypeId);
 
                         if (action === "update") { //this is update, not insert, get webUser by the id
                             console.log("Now getting webUser record " + id + " for the update");
@@ -173,6 +191,28 @@ const VendingInsertOrUpdate = (props) => {
             );
             setIsLoading(false);
         }, []);
+    React.useEffect(() => {
+        console.log("AJAX call for web user list");
+        ajax_alt("webUser/getAll",
+            function (obj) { // obj holds web user list from AJAX call
+                console.log("webUser/getAll Ajax success");
+                if (obj.dbError.length > 0) {  // db error trying to read web user list
+                    setErrorObj(setProp(errorObj, "webUserId", obj.dbError));
+                } else {
+                    console.log('web user list on next line');
+                    console.log(obj.webUserList);
+                    setWebUserList(obj.webUserList);
+                    // setUserData(setProp(userData, "webUserId", obj.roleList[0].webUserId)); // FIX
+
+
+                }
+            },
+            function (ajaxErrorMsg) { // AJAX Error Msg from trying to read the web user list.
+                setErrorObj(setProp(errorObj, "errorMsg", ajaxErrorMsg));
+            }
+        );
+    }, []);
+
 
 
     // This code should execute every time the submit BUTTON is clicked, 
@@ -289,9 +329,12 @@ const VendingInsertOrUpdate = (props) => {
                 <tr>
                     <td>acceptsBillsAndCoins</td>
                     <td>
-                        <input value={userData.acceptsBillsAndCoins} onChange=
+                        <select value={userData.acceptsBillsAndCoins} onChange=
                             {e => setUserData(setProp(userData, "acceptsBillsAndCoins", e.target.value))}
-                        />
+                        >
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
                     </td>
                     <td className="error">
                         {errorObj.acceptsBillsAndCoins}
@@ -300,9 +343,12 @@ const VendingInsertOrUpdate = (props) => {
                 <tr>
                     <td>acceptsEPayments</td>
                     <td>
-                        <input value={userData.acceptsEPayments} onChange=
+                        <select value={userData.acceptsEPayments} onChange=
                             {e => setUserData(setProp(userData, "acceptsEPayments", e.target.value))}
-                        />
+                        >
+                            <option value={true}>true</option>
+                            <option value={false}>false</option>
+                        </select>
                     </td>
                     <td className="error">
                         {errorObj.acceptsEPayments}
@@ -326,8 +372,43 @@ const VendingInsertOrUpdate = (props) => {
                         </select>
                     </td>
                 </tr>
-                {/* get both the webuserid and vendingtypeid */}
+                {/* <tr>
+                    <td>webUser</td>
+                    <td>
+                        <input value={userData.webUser} onChange=
+                            {e => setUserData(setProp(userData, "webUserId", e.target.value))}
+                        />
+                    </td>
+                    <td className="error">
+                        {errorObj.webUserId}
+                    </td>
 
+                </tr> */}
+                <tr>
+                    <td>webUser</td>
+                    <td>
+                        <select onChange={e => setUserData(setProp(userData, "webUserId", e.target.value))}
+
+                            value={userData.webUserId}
+                        >   
+                            <option value="">---Select---</option>
+                            {
+                                webUserList.map(webUser =>
+                                    
+                                        <option key={webUser.webUserId} value={webUser.webUserId} >
+                                        {webUser.userEmail}
+                                        </option>
+                                    
+                                
+                                    
+                                )
+                            }
+                        </select>
+                    </td>
+                    <td className ="error">
+                        {errorObj.webUserId}
+                    </td>
+                </tr>
                 <tr>
                     <td>vendingType</td>
                     <td>
@@ -336,18 +417,31 @@ const VendingInsertOrUpdate = (props) => {
                             value={userData.vendingTypeId}
                         >
                             {
-                                roleList.map(role =>
-                                    <option key={role.vendingTypeId} value={role.vendingTypeId} >
-                                        {role.vendingTypeDesc}
-                                    </option>
+                                roleList.map(role => 
+                                  
+                                        <option key={role.vendingTypeId} value={role.vendingTypeId} >
+                                            {role.vendingTypeDesc}
+                                        </option>
+                                    
                                 )
                             }
                         </select>
                     </td>
                     <td className="error">
-                        {errorObj.userRoleId}
+                        {errorObj.vendingTypeId}
                     </td>
                 </tr>
+                {/* <tr>
+                    <td>vendingType</td>
+                    <td>
+                        <input value={userData.vendingType} onChange=
+                            {e => setUserData(setProp(userData, "vendingTypeId", e.target.value))}
+                        />
+                    </td>
+                    <td className="error">
+                        {errorObj.vendingTypeId}
+                    </td>
+                </tr> */}
                 <tr>
                     <td>
                         <br />

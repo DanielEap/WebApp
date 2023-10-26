@@ -22,7 +22,7 @@ public class VendingView {
         StringData sd = new StringData();
         
         try {
-            String sql = "SELECT ID,  ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user.web_user_id, vending_type_desc, user_email "
+            String sql = "SELECT ID,  ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user.web_user_id, vending_type.vending_type_id, vending_type_desc, user_email "
                     + "FROM tblVendingMachine, web_user, vending_type where tblVendingMachine.web_user_id = web_user.web_user_id and tblVendingMachine.vending_type_id = vending_type.vending_type_id "
                     + "ORDER BY ID";  // always order by something, not just random order.
             
@@ -48,7 +48,8 @@ public class VendingView {
                 sd.acceptsBillsAndCoins = Format.fmtBoolean(results.getObject("acceptsBillsAndCoins"));
                 sd.acceptsEPayments = Format.fmtBoolean(results.getObject("acceptsEPayments"));
                 sd.review = Format.fmtDecimal(results.getObject("review"));
-                sd.webUserID = Format.fmtInteger(results.getObject("web_user_id"));
+                sd.webUserId = Format.fmtInteger(results.getObject("web_user_id"));
+                sd.vendingTypeId = Format.fmtInteger(results.getObject("vending_type_id"));
                 sd.vendingTypeDesc = Format.fmtString(results.getObject("vending_type_desc"));
                 sd.userEmail = Format.fmtString(results.getObject("user_email"));
                 sdl.add(sd);

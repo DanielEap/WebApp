@@ -11,10 +11,10 @@ public class StringData {
     public String acceptsBillsAndCoins = ""; // tinyInt
     public String acceptsEPayments = ""; // tinyInt
     public String review = ""; // double
-    public String webUserID = ""; // int
+    public String webUserId = ""; // int
    
     public String userEmail = ""; // varchar
-    public String vendingTypeID = ""; // int
+    public String vendingTypeId = ""; // int
     public String vendingTypeDesc = ""; // varchar
     public String errorMsg = ""; // not actually in the database, use
                                  // to convey success or failure.
@@ -23,8 +23,8 @@ public class StringData {
         String s = this.ID+ this.ticketDate + this.image +
          this.latitude + this.longitude + this.description +
           this.acceptsBillsAndCoins + this.acceptsEPayments + 
-          this.review + this.webUserID + this.userEmail + 
-          this.vendingTypeID + this.vendingTypeDesc;
+          this.review + this.webUserId + this.userEmail + 
+          this.vendingTypeId + this.vendingTypeDesc;
         return s.length();
     }
 
@@ -40,9 +40,9 @@ public class StringData {
         ", Accepts Bills And Coins: " + this.acceptsBillsAndCoins + 
         ", Accepts E Payments: "+ this.acceptsEPayments + 
         ", Review: " + this.review +
-        ", Web User ID: " + this.webUserID +
+        ", Web User ID: " + this.webUserId +
         ", User Email: " + this.userEmail +
-        ", Vending Type ID: " + this.vendingTypeID +
+        ", Vending Type ID: " + this.vendingTypeId +
         ", Vending Type Desc: " + this.vendingTypeDesc;
         
         // ", User Email: " + this.userEmail;
