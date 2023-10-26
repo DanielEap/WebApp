@@ -114,10 +114,10 @@ const VendingInsertOrUpdate = (props) => {
         () => {
 
             console.log("AJAX call for role list");
-            ajax_alt("role/getAll",
+            ajax_alt("vendingType/getAll",
 
                 function (obj) { // obj holds role list from AJAX call
-                    console.log("role/getAll Ajax success");
+                    console.log("vendingType/getAll Ajax success");
                     if (obj.dbError.length > 0) {  // db error trying to read role list
                         setErrorObj(setProp(errorObj, "userRoleId", obj.dbError));
                     } else {
@@ -145,7 +145,7 @@ const VendingInsertOrUpdate = (props) => {
 
                         if (action === "update") { //this is update, not insert, get webUser by the id
                             console.log("Now getting webUser record " + id + " for the update");
-                            ajax_alt("/webUser/getById?userId=" + id,
+                            ajax_alt("/tblVendingMachine/getById?userId=" + id,
                                 function (obj) {
                                     if (obj.errorMsg.length > 0) { // obj.errorMsg holds error, e.g., db error
                                         console.log("DB error trying to get the webUser record for udpate");
@@ -186,7 +186,7 @@ const VendingInsertOrUpdate = (props) => {
         if (submitCount > 0) { // dont make the AJAX call on initial render
 
             // action was set to insert or update above (must match web API @RequestMapping). 
-            ajax_alt("webUser/" + action + "?jsonData=" + encodeUserInput(),
+            ajax_alt("tblVendingMachine/" + action + "?jsonData=" + encodeUserInput(),
 
                 function (obj) { // obj holds field level error messages
                     console.log("These are the error messages (next line)");
@@ -329,16 +329,16 @@ const VendingInsertOrUpdate = (props) => {
                 {/* get both the webuserid and vendingtypeid */}
 
                 <tr>
-                    <td>Role</td>
+                    <td>vendingType</td>
                     <td>
                         <select onChange=
-                            {e => setUserData(setProp(userData, "userRoleId", e.target.value))}
-                            value={userData.userRoleId}
+                            {e => setUserData(setProp(userData, "vendingTypeId", e.target.value))}
+                            value={userData.vendingTypeId}
                         >
                             {
                                 roleList.map(role =>
-                                    <option key={role.userRoleId} value={role.userRoleId} >
-                                        {role.userRoleType}
+                                    <option key={role.vendingTypeId} value={role.vendingTypeId} >
+                                        {role.vendingTypeDesc}
                                     </option>
                                 )
                             }
