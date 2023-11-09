@@ -7,6 +7,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
         // should redisplay this component. Set its initial value to [], an empty array.
         const [items, setItems] = React.useState([]);
 
+        const [dbItems, setDbItems] = React.useState([]);
         // Tell React that "error" is a state variable that (when changed by the React 
         // provided setter function 'setError') should redisplay this component. 
         // Set its initial value to null.
@@ -45,6 +46,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                             setError("Database Error. " + dbList.dbError);
                         } else {
                             setItems(dbList.vendingList)
+                            setDbItems(dbList.vendingList);
                         }
                     },
                     function (errorMsg) { // ajax_alt calls this function if ajax call fails
@@ -58,12 +60,17 @@ function MakeShowVending({ titleText = "Default Vending" }) {
         );
 
         const doFilter = () => {
-
-            let newItems = filterObjList(items, filterInput);
-            console.log("doFilter, filterInputVal is: " + filterInput +
-                ". See filtered list on next line:");
-            console.log(newItems);
-            setItems(newItems);
+            if(!filterInput || filterInput.length === 0) {
+                setItems(dbItems);
+                
+            }else{
+                let newItems = filterObjList(items, filterInput);
+                console.log("filter input is: " + filterInput);
+                console.log("doFilter, filterInputVal is: " + filterInput +
+                    ". See filtered list on next line:");
+                console.log(newItems);
+                setItems(newItems);
+            }
         };
 
         function sortByProp(propName, sortType) {

@@ -37,7 +37,7 @@ function filterObjList (refList, searchKey) {
 
     // Entry Point filterObjList
     if (!searchKey || searchKey === "") {
-
+        console.log("searchKey " + searchKey);
         console.log("filterObjList empty searchkey so newList is same as old one");
 
         return copyList(refList); 
