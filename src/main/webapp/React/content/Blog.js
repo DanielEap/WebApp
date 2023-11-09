@@ -124,6 +124,19 @@ about this module (LA and HW) */}
                     are communicating correctly. On top of that, now having DOM elements in the correct spot as now there are more to consider.
                 </p>
             </div>
+            <div id="Logon_HW">
+                <h3>Logon HW Blog</h3>
+                <p>
+                    This week surprisingly took a decent amount of time to complete. A lot of the time was spent 
+                    looking at and studying the example code and making sure I understood what was going on.
+                    Though, this process was very informative, so I am glad I took the time to do so.
+                    Otherwise, the only thing that took some brain power was the server side code for the session work.
+                    I had to look at both the demo sample code and also some of the code from the lab to correctly get the
+                    logon to work and also some more digging to realize the usage of RequestParam. Once logon was done, 
+                    everything else was completed super quickly. This module was just great to learn about how sessions work 
+                    and what they are useful for.
+                </p>
+            </div>
         </div>
     );
 }

@@ -1,0 +1,29 @@
+.profile {
+    margin-top: 0.5rem;
+    text-align: center;
+    font-size: 1rem;
+    line-height: 1.5rem;
+}
+
+.profile div {
+    padding-top: 2rem;
+    margin:auto; /* centers the div in its container */
+}
+
+.profile span { /* these are the prompts before the textboxes */
+    margin-left: 1rem;
+    margin-right: 0.25rem;
+}
+
+.profile button {
+    margin-left: 1rem;
+}
+
+.profile img {
+    width: 20%;
+    position: relative;
+    /* image in center of screen */
+    left: 20%;
+    border-radius:0.5rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem #888888;
+}

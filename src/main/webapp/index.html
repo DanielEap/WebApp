@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="style/site.css" />
     <link rel="stylesheet" href="style/vendingList.css" />
     <link rel="stylesheet" href="style/clickSort.css" />
+    <link rel="stylesheet" href="style/login.css" />
+    <link rel="stylesheet" href="style/profile.css" />
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vending Machine Locator</title>
@@ -70,6 +72,10 @@
     <script src="React/content/AjaxUserTable.js" type="text/babel"></script>
     <script src="React/content/UserInsertOrUpdate.js" type="text/babel"></script>
     <script src="React/content/VendingInsertOrUpdate.js" type="text/babel"></script>
+
+    <script src="React/content/Login.js" type="text/babel"></script>
+    <script src="React/content/Profile.js" type="text/babel"></script>
+    <script src="React/content/Logout.js" type="text/babel"></script>
     <!-- <script>
      VendingListContent();
     </script> -->
@@ -102,6 +108,9 @@
                             <div class="dropHeader">Account</div>
                             <div class="dropContent">
                                 <Link to="/userInsert">Register</Link> <br />
+                                <Link to="/login">Login</Link> <br />
+                                <Link to="/profile">Profile</Link> <br />
+                                <Link to="/logout">Logout</Link> <br />
                             </div>
                         </div>
                         <div class="dropDown">
@@ -138,6 +147,11 @@
                     <Route path="/showVending" component={ShowVending} />
                     <Route path="/userInsert" component={UserInsertOrUpdate} />
                     <Route path="/vendingInsert" component={VendingInsertOrUpdate} />
+
+                    <Route path="/login" component={Login} />
+                    <Route path="/profile" component={Profile} />
+                    <Route path="/logout" component={Logout} />
+
                 </div>
 
                 <div id="footer">Daniel Eap</div>
