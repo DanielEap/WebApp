@@ -143,6 +143,8 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                             <th onClick={() => sortByProp("vendingTypeDesc", "text")}>
                                 <img src="assets/sortDown.png" />Vending Type
                             </th>
+                            <th onClick={() => sortByProp("userEmail", "text")}>
+                                <img src="assets/sortDown.png" />User Email</th>
                             <th>Error</th>
                         </tr>
                     </thead>
@@ -167,6 +169,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     <td>{listObj.description}</td>
                                     <td className="textAlignRight">{listObj.review}</td>
                                     <td>{listObj.vendingTypeDesc}</td>
+                                    <td>{listObj.userEmail}</td>
                                     <td>{listObj.errorMsg}</td>
 
                                 </tr>

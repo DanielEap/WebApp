@@ -35,7 +35,7 @@ public class DbMods {
         // if (inputData.userPassword.compareTo(inputData.userPassword2) != 0) { // case sensative comparison
         //     errorMsgs.userPassword2 = "Both passwords must match";
         // }
-        errorMsgs.ticketDate = Validate.dateMsg(inputData.ticketDate, false);
+        errorMsgs.ticketDate = Validate.dateMsg(inputData.ticketDate, true);
         errorMsgs.image = Validate.stringMsg(inputData.image, 300, false);
         errorMsgs.latitude = Validate.latitudeMsg(inputData.latitude, true);
         errorMsgs.longitude = Validate.longitudeMsg(inputData.longitude, true);
