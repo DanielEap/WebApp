@@ -22,8 +22,6 @@
 .login img {
     width: 20%;
     position: relative;
-    /* image in center of screen */
-    left: 20%;
     border-radius:0.5rem;
     box-shadow: 0.5rem 0.5rem 0.5rem #888888;
 }

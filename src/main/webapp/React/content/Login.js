@@ -49,7 +49,7 @@ function Login(){
                 <label for="emailInput">User Email Address </label>
                 <input value={userEmail} id="emailInput" onChange={(e) => setUserEmail(e.target.value)}></input> &nbsp;
                 <label for="passInput">Password </label>
-                <input value={userPass} id="passInput"type="pass" onChange={(e) => setUserPass(e.target.value)}></input> &nbsp;
+                <input value={userPass} id="passInput"type="password" onChange={(e) => setUserPass(e.target.value)}></input> &nbsp;
                 <button onClick ={checkLogin}>Submit</button>
             </span>
             <div>{msg}</div>
