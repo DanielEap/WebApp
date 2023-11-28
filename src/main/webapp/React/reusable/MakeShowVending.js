@@ -31,6 +31,9 @@ function MakeShowVending({ titleText = "Default Vending" }) {
         function callInsert() {
             window.location.hash = "#/vendingInsert";
         }
+        function callUpdate(vendingId){
+            window.location.hash = "#/vendingUpdate/:" + vendingId;
+        }
         React.useEffect(
             () => {
 
@@ -109,7 +112,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                     <thead>
                         <tr>
                             <th>
-                                Edit
+                                Edit Vending
                             </th>
                             <th onClick={() => sortByProp("ticketDate", "date")}>
                                 <img src="assets/sortDown.png" />Ticket Date
@@ -149,7 +152,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     <td>{listObj.errorMsg}</td> */}
                                     {/* <td>{listObj.ID}</td> */}
                                     {/* <td>{listObj.ticketID}</td> */}
-                                    <td><img src="assets/update.png"/></td>
+                                    <td><img src="assets/update.png" onClick={() => callUpdate(listObj.ID)}/></td>
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter">
                                         {listObj.image ? <img src={listObj.image} /> : null}

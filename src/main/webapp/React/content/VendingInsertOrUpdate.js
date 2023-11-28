@@ -88,7 +88,7 @@ const VendingInsertOrUpdate = (props) => {
             "review": userData.review,
             "webUserId": userData.webUserId,
             "vendingTypeId": userData.vendingTypeId,
-            // "errorMsg": userData.errorMsg
+            "errorMsg": userData.errorMsg
 
 
         };
@@ -162,11 +162,11 @@ const VendingInsertOrUpdate = (props) => {
                         console.log("set initial role id for web_user to be " + obj.roleList[0].vendingTypeId);
 
                         if (action === "update") { //this is update, not insert, get webUser by the id
-                            console.log("Now getting webUser record " + id + " for the update");
-                            ajax_alt("/tblVendingMachine/getById?userId=" + id,
+                            console.log("Now getting tblVendingMachine record " + id + " for the update");
+                            ajax_alt("/tblVendingMachine/getById?vendingId=" + id,
                                 function (obj) {
                                     if (obj.errorMsg.length > 0) { // obj.errorMsg holds error, e.g., db error
-                                        console.log("DB error trying to get the webUser record for udpate");
+                                        console.log("DB error trying to get the tblVendingMachine record for udpate");
                                         setErrorObj(setProp(errorObj, "errorMsg", obj.errorMsg));
                                         //setProp = (obj, propName, propValue)
 
