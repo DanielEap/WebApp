@@ -118,7 +118,7 @@ about this module (LA and HW) */}
             <div id="Insert_HW">
                 <h3>Insert HW Blog</h3>
                 <p>
-                    This week was definitely one of the more time consuming ones. It was a little challenging going through the lab and homework. It was a lot of file management 
+                    This week was definitely one of the more time consuming ones. It was a little challenging going through the lab and homework. It was a lot of file management
                     and just making sure that every file lined up correctly. Also because my data is different than what was given in the example, sometimes it was hard to debug as well.
                     Additionally, since the project is getting so big, a really big painpoint is having to take care of all variables and making sure things between the server and client code
                     are communicating correctly. On top of that, now having DOM elements in the correct spot as now there are more to consider.
@@ -127,14 +127,24 @@ about this module (LA and HW) */}
             <div id="Logon_HW">
                 <h3>Logon HW Blog</h3>
                 <p>
-                    This week surprisingly took a decent amount of time to complete. A lot of the time was spent 
+                    This week surprisingly took a decent amount of time to complete. A lot of the time was spent
                     looking at and studying the example code and making sure I understood what was going on.
                     Though, this process was very informative, so I am glad I took the time to do so.
                     Otherwise, the only thing that took some brain power was the server side code for the session work.
                     I had to look at both the demo sample code and also some of the code from the lab to correctly get the
-                    logon to work and also some more digging to realize the usage of RequestParam. Once logon was done, 
-                    everything else was completed super quickly. This module was just great to learn about how sessions work 
+                    logon to work and also some more digging to realize the usage of RequestParam. Once logon was done,
+                    everything else was completed super quickly. This module was just great to learn about how sessions work
                     and what they are useful for.
+                </p>
+            </div>
+            <div id="Update_HW">
+                <h3>Update HW Blog</h3>
+                <p>
+                    This week was very quick and easy to complete. The lab covered a lot of the code that needed 
+                    to be done for the homework. Since it was also similar to the insert homework, it was very easy
+                    to just reuse code and make the necessary changes. The only thing that took some time was that I had
+                    to fix my previous work to make sure that everything was functioning correctly. I had to make sure the
+                    error messages were displaying correctly.
                 </p>
             </div>
         </div>
