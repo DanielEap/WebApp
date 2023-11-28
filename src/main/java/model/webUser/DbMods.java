@@ -1,5 +1,8 @@
 package model.webUser;
 
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
 import dbUtils.*;
 
 public class DbMods {
@@ -98,5 +101,61 @@ public class DbMods {
         } // customerId is not null and not empty string.
         return errorMsgs;
     } // insert
+
+    public static StringData getById(DbConn dbc, String id) {
+        StringData sd = new StringData();
+        // This case already tested in the controller, but ("belt and suspenders")
+        // we are double checking here as well.
+        if (id == null) {
+            sd.errorMsg = "Cannot getById (user): id is null";
+            return sd;
+        }
+
+        sd.errorMsg = dbc.getErr();
+        if (sd.errorMsg.length() > 0) { // cant proceed, database error
+            return sd;
+        }
+
+        Integer intId;
+        try {
+            intId = Integer.valueOf(id);
+        } catch (Exception e) {
+            sd.errorMsg = "Cannot getById (user): URL parameter 'id' can't be converted to an Integer.";
+            return sd;
+        }
+        try {
+            String sql = "SELECT web_user_id, user_email, user_password, membership_fee, birthday, "
+                    + "user_image, web_user.user_role_id, user_role_type "
+                    + "FROM web_user, user_role WHERE web_user.user_role_id = user_role.user_role_id "
+                    + "AND web_user_id = ?";
+            PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
+
+            // Encode the id (that the user typed in) into the select statement, into the
+            // the first (and only) ?
+            stmt.setInt(1, intId);
+
+            ResultSet results = stmt.executeQuery();
+            if (results.next()) { // id is unique, one or zero records expected in result set
+
+                // plainInteger returns integer converted to string with no commas.
+                sd.webUserId = Format.fmtInteger(results.getObject("web_user_id"));
+                sd.userEmail = Format.fmtString(results.getObject("user_email"));
+                sd.userPassword = Format.fmtString(results.getObject("user_password"));
+                sd.userImage = Format.fmtString(results.getObject("user_image"));
+                sd.birthday = Format.fmtDate(results.getObject("birthday"));
+                sd.membershipFee = Format.fmtDollar(results.getObject("membership_fee"));
+                sd.userRoleId = Format.fmtInteger(results.getObject("web_user.user_role_id"));
+                sd.userRoleType = Format.fmtString(results.getObject("user_role_type"));
+
+            } else {
+                sd.errorMsg = "Web User Not Found.";
+            }
+            results.close();
+            stmt.close();
+        } catch (Exception e) {
+            sd.errorMsg = "Exception thrown in model.webUser.DbMods.getById(): " + e.getMessage();
+        }
+        return sd;
+    } // getById
 
 }
