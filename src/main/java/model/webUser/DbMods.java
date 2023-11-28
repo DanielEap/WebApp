@@ -157,5 +157,70 @@ public class DbMods {
         }
         return sd;
     } // getById
+    public static StringData update(StringData updateData, DbConn dbc) {
+
+        StringData errorMsgs = new StringData();
+        errorMsgs = validate(updateData);
+
+        // For update, we also need to check that webUserId has been supplied by the user...
+        errorMsgs.webUserId = Validate.integerMsg(updateData.webUserId, true);
+
+        if (errorMsgs.characterCount() > 0) { // at least one field has an error, don't go any further.
+            errorMsgs.errorMsg = "Please try again";
+            return errorMsgs;
+
+        } else { // all fields passed validation
+
+            /* Useful to know the exact field names in the database... 
+             * String sql =
+             * "SELECT web_user_id, user_email, user_password, user_image, membership_fee, "
+             * "birthday, web_user.user_role_id, user_role_type "+
+             * "FROM web_user, user_role where web_user.user_role_id = user_role.user_role_id "
+             * "ORDER BY web_user_id ";
+             */
+
+            String sql = "UPDATE web_user SET user_email = ?, user_password = ?, user_image = ?, "+
+                    "membership_fee = ?, birthday = ?, user_role_id = ? WHERE web_user_id = ?";
+
+            // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
+            // Only difference is that Sally's class takes care of encoding null
+            // when necessary. And it also System.out.prints exception error messages.
+            PrepStatement pStatement = new PrepStatement(dbc, sql);
+
+            // Encode string values into the prepared statement (wrapper class).
+            pStatement.setString(1, updateData.userEmail); // string type is simple
+            pStatement.setString(2, updateData.userPassword);
+            pStatement.setString(3, updateData.userImage);
+            pStatement.setBigDecimal(4, Validate.convertDecimal(updateData.membershipFee));
+            pStatement.setDate(5, Validate.convertDate(updateData.birthday));
+            pStatement.setInt(6, Validate.convertInteger(updateData.userRoleId));
+            pStatement.setInt(7, Validate.convertInteger(updateData.webUserId));
+
+            // here the SQL statement is actually executed
+            int numRows = pStatement.executeUpdate();
+
+            // This will return empty string if all went well, else all error messages.
+            errorMsgs.errorMsg = pStatement.getErrorMsg();
+            if (errorMsgs.errorMsg.length() == 0) {
+                if (numRows == 1) {
+                    errorMsgs.errorMsg = ""; // This means SUCCESS. Let the user interface decide how to tell this to
+                                             // the user.
+                } else {
+                    // probably never get here unless you forgot your WHERE clause and did a bulk
+                    // sql update OR the web User id (supplied by the client side) does not exist.
+                    errorMsgs.errorMsg = numRows + " records were inserted when exactly 1 was expected.";
+                }
+            } else if (errorMsgs.errorMsg.contains("foreign key")) {
+                errorMsgs.errorMsg = "Invalid User Role Id - " + errorMsgs.errorMsg;
+            } else if (errorMsgs.errorMsg.contains("Duplicate entry")) {
+                errorMsgs.errorMsg = "That email address is already taken - " + errorMsgs.errorMsg;
+            }
+
+        } // customerId is not null and not empty string.
+        return errorMsgs;
+    } // update
+
+
+
 
 }
