@@ -47,7 +47,7 @@ const VendingInsertOrUpdate = (props) => {
     // Role List populates the <select tag> for the UI.
     const [roleList, setRoleList] = React.useState([]);
     const [webUserList, setWebUserList] = React.useState([]);
-    
+
     // Object (State Variable) that holds all the error messages - field level 
     // and form/record level (errorMsg).
     const [errorObj, setErrorObj] = React.useState(
@@ -231,7 +231,6 @@ const VendingInsertOrUpdate = (props) => {
                 function (obj) { // obj holds field level error messages
                     console.log("These are the error messages (next line)");
                     console.log(obj);
-
                     if (obj.errorMsg.length === 0) {
                         // errorMsg = "" means no error, record was inserted (or updated). 
                         obj.errorMsg = "Record Saved !";
@@ -362,9 +361,10 @@ const VendingInsertOrUpdate = (props) => {
                             {e => setUserData(setProp(userData, "review", e.target.value))}
                             value={userData.review}
                         >
+                            
                             {
                                 [1, 2, 3, 4, 5].map(review =>
-                                    <option key={review} value={review} >
+                                    <option key={review.review} value={review.review} >
                                         {review}
                                     </option>
                                 )
@@ -390,22 +390,22 @@ const VendingInsertOrUpdate = (props) => {
                         <select onChange={e => setUserData(setProp(userData, "webUserId", e.target.value))}
 
                             value={userData.webUserId}
-                        >   
+                        >
                             <option value="">---Select---</option>
                             {
                                 webUserList.map(webUser =>
-                                    
-                                        <option key={webUser.webUserId} value={webUser.webUserId} >
+
+                                    <option key={webUser.webUserId} value={webUser.webUserId} >
                                         {webUser.userEmail}
-                                        </option>
-                                    
-                                
-                                    
+                                    </option>
+
+
+
                                 )
                             }
                         </select>
                     </td>
-                    <td className ="error">
+                    <td className="error">
                         {errorObj.webUserId}
                     </td>
                 </tr>
@@ -417,12 +417,12 @@ const VendingInsertOrUpdate = (props) => {
                             value={userData.vendingTypeId}
                         >
                             {
-                                roleList.map(role => 
-                                  
-                                        <option key={role.vendingTypeId} value={role.vendingTypeId} >
-                                            {role.vendingTypeDesc}
-                                        </option>
-                                    
+                                roleList.map(role =>
+
+                                    <option key={role.vendingTypeId} value={role.vendingTypeId} >
+                                        {role.vendingTypeDesc}
+                                    </option>
+
                                 )
                             }
                         </select>
