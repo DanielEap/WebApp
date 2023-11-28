@@ -108,27 +108,9 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                 <table>
                     <thead>
                         <tr>
-                            {/* <th onClick={() => sortByProp("userEmail", "text")} >
-                                <img src="assets/sortDown.png" />Email
+                            <th>
+                                Edit
                             </th>
-                            <th className="textAlignCenter">Image</th>
-                            <th onClick={() => sortByProp("birthday", "date")}
-                                className="textAlignCenter">
-                                <img src="assets/sortDown.png" />Birthday
-                            </th>
-                            <th onClick={() => sortByProp("membershipFee", "number")}
-                                className="textAlignRight" >
-                                <img src="assets/sortDown.png" />Membership Fee
-                            </th>
-                            <th onClick={() => sortByProp("userRoleType", "text")}>
-                                <img src="assets/sortDown.png" />Role
-                            </th> */}
-                            {/* <th onClick={() => sortByProp("ID", "number")} >
-                                <img src="assets/sortDown.png" />ID
-                            </th> */}
-                            {/* <th onClick={() => sortByProp("ticketID", "text")}>
-                                <img src="assets/sortDown.png" />Ticket ID
-                            </th> */}
                             <th onClick={() => sortByProp("ticketDate", "date")}>
                                 <img src="assets/sortDown.png" />Ticket Date
                             </th>
@@ -167,6 +149,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     <td>{listObj.errorMsg}</td> */}
                                     {/* <td>{listObj.ID}</td> */}
                                     {/* <td>{listObj.ticketID}</td> */}
+                                    <td><img src="assets/update.png"/></td>
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter">
                                         {listObj.image ? <img src={listObj.image} /> : null}

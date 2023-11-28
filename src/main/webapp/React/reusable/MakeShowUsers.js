@@ -31,6 +31,9 @@ function MakeShowUsers({ titleText = "Default Title" }) {
         function callInsert() {
             window.location.hash = "#/userInsert";
         }
+        function callUpdate(){
+            window.location.hash = "#/userUpdate";
+        }
         React.useEffect(
             () => {
 
@@ -108,6 +111,9 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                 <table>
                     <thead>
                         <tr>
+                            <th>
+                                Edit
+                            </th>
                             <th onClick={() => sortByProp("userEmail", "text")} >
                                 <img src="assets/sortDown.png" />Email
                             </th>
@@ -130,6 +136,9 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                         {
                             items.map((listObj) =>
                                 <tr key={listObj.webUserId}>
+                                    <td>
+                                        <img src="assets/update.png" onclick={callUpdate}/>
+                                    </td>
                                     <td>{listObj.userEmail}</td>
                                     <td className="shadowImage textAlignCenter">
                                         {listObj.userImage ? <img src={listObj.userImage} /> : null}
