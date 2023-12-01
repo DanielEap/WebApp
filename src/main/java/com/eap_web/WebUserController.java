@@ -111,7 +111,7 @@ public class WebUserController {
     public String delete(@RequestParam("userId") String deleteUserId) {
         StringData sd = new StringData();
         if (deleteUserId == null) {
-            sd.errorMsg = "Error: URL must be user/getById?userId=xx, where " +
+            sd.errorMsg = "Error: URL must be /webUser/delete?userId=xx, where " +
                     "xx is the web_user_id of the web_user record to be deleted.";
         } else {
             DbConn dbc = new DbConn();

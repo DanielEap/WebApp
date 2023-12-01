@@ -108,5 +108,19 @@ public class TblVendingMachineController {
         }
         return Json.toJson(errorData);
     }
-
+    @RequestMapping(value = "/tblVendingMachine/delete", params = {
+        "vendingId" }, produces = "application/json")
+public String delete(@RequestParam("vendingId") String deleteVendingId) {
+    StringData sd = new StringData();
+    if (deleteVendingId == null) {
+        sd.errorMsg = "Error: URL must be /tblVendingMachine/delete?vendingId=xx, where " +
+                "xx is the id of the tblVendingMachine record to be deleted.";
+    } else {
+        DbConn dbc = new DbConn();
+        sd = DbMods.delete(dbc, deleteVendingId);
+        dbc.close(); // EVERY code path that opens a db connection must close it
+        // (or else you have a database connection leak).
+    }
+    return Json.toJson(sd);
+}
 }

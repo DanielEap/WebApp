@@ -31,9 +31,9 @@ function MakeShowUsers({ titleText = "Default Title" }) {
         function callInsert() {
             window.location.hash = "#/userInsert";
         }
-        function callUpdate(webUserId){
-           window.location.hash = `#/userUpdate/:${webUserId}`;
-           console.log("clicked update with webUserId: " + webUserId);
+        function callUpdate(webUserId) {
+            window.location.hash = `#/userUpdate/:${webUserId}`;
+            console.log("clicked update with webUserId: " + webUserId);
         }
 
         function deleteListEle(theList, indx) {
@@ -51,11 +51,11 @@ function MakeShowUsers({ titleText = "Default Title" }) {
         function deleteUser(userObj, indx) {
 
             console.log("To delete user " + userObj.userEmail + "?");
-    
+
             if (confirm("Do you really want to delete " + userObj.userEmail + "? ")) {
-    
+
                 ajax_alt("webUser/delete?userId=" + userObj.webUserId, success, fail);
-    
+
                 function success(obj) {
                     console.log("delete API was successfully called, return obj on next line");
                     console.log(obj);
@@ -66,17 +66,17 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                         alert("Could not delete that record. " + obj.errorMsg);
                     }
                 }
-    
+
                 function fail(errorMsg) {
                     console.log("delete API was NOT successfully called.  Error message: ");
                     console.log(errorMsg);
-                    alert("AJAX failure: could not invoke API webUser/delete?userId=" + userObj.webUserId+
-                    " Ajax error: "+errorMsg);
+                    alert("AJAX failure: could not invoke API webUser/delete?userId=" + userObj.webUserId +
+                        " Ajax error: " + errorMsg);
                 }
-    
+
             }
         } // deleteUser
-    
+
         React.useEffect(
             () => {
 
@@ -183,7 +183,7 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.webUserId)} />
                                         <img src="assets/delete.png" onClick={() => deleteUser(listObj, listObj.webUserId)} />
                                     </td>
-                                    <td>{listObj.userEmail + ' ('+listObj.webUserId+')'}</td>
+                                    <td>{listObj.userEmail + ' (' + listObj.webUserId + ')'}</td>
                                     <td className="shadowImage textAlignCenter">
                                         {listObj.userImage ? <img src={listObj.userImage} /> : null}
                                     </td>

@@ -245,4 +245,55 @@ public class DbMods {
         } // customerId is not null and not empty string.
         return errorMsgs;
     } // update
+
+
+      // The return value is found in StringData.errorMsg. Even though a simple String
+    // would have been OK to communicate failure (error message) or success (empty
+    // string),
+    // we pass back a StringData object because our ajax function assumes it's
+    // getting the
+    // JSON of some object (not just a simple String).
+    public static StringData delete(DbConn dbc, String vendingId) {
+
+        StringData sd = new StringData();
+
+        if (vendingId == null) {
+            sd.errorMsg = "model.vending.DbMods.delete: " +
+                    "cannot delete tblVendingMachine record because 'vendingId' is null";
+            return sd;
+        }
+
+        sd.errorMsg = dbc.getErr();
+        if (sd.errorMsg.length() > 0) { // cannot proceed, db error
+            return sd;
+        }
+
+        try {
+
+            String sql = "DELETE FROM tblVendingMachine WHERE ID = ?";
+
+            // Compile the SQL (checking for syntax errors against the connected DB).
+            PreparedStatement pStatement = dbc.getConn().prepareStatement(sql);
+
+            // Encode user data into the prepared statement.
+            pStatement.setString(1, vendingId);
+
+            int numRowsDeleted = pStatement.executeUpdate();
+
+            if (numRowsDeleted == 0) {
+                sd.errorMsg = "Record not deleted - there was no record with vendingId " + vendingId;
+            } else if (numRowsDeleted > 1) {
+                sd.errorMsg = "Programmer Error: > 1 record deleted. Did you forget the WHERE clause?";
+            }
+
+        } catch (Exception e) {
+            if(e.getMessage().contains("foreign key")) {
+                sd.errorMsg = "Cannot delete Id because of foreign keys. " + e.getMessage();
+            } else {
+                sd.errorMsg = "Exception thrown in model.webUser.DbMods.delete(): " + e.getMessage();
+            }
+        }
+
+        return sd;
+    }
 }

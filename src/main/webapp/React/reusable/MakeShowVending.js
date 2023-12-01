@@ -31,9 +31,50 @@ function MakeShowVending({ titleText = "Default Vending" }) {
         function callInsert() {
             window.location.hash = "#/vendingInsert";
         }
-        function callUpdate(vendingId){
+        function callUpdate(vendingId) {
             window.location.hash = "#/vendingUpdate/:" + vendingId;
         }
+
+        function deleteListEle(theList, indx) {
+            let newList = [];
+            for (var i = 0; i < theList.length; i++) {
+                if (i !== indx) {
+                    newList.push(theList[i]);
+                }
+            }
+            console.log("here is list after deleting element " + indx);
+            console.log(newList);
+            return newList;
+        }
+
+        function deleteVending(vendingObj, indx) {
+
+            console.log("To delete vending " + vendingObj.ID + "?");
+
+            if (confirm("Do you really want to delete vending item: " + vendingObj.ID + "? ")) {
+
+                ajax_alt("tblVendingMachine/delete?vendingId=" + vendingObj.ID, success, fail);
+
+                function success(obj) {
+                    console.log("delete API was successfully called, return obj on next line");
+                    console.log(obj);
+                    if (obj.errorMsg.length < 1) { // record actually deleted
+                        console.log("Actual DB delete");
+                        setItems(deleteListEle(items, indx));
+                    } else {
+                        alert("Could not delete that record. " + obj.errorMsg);
+                    }
+                }
+
+                function fail(errorMsg) {
+                    console.log("delete API was NOT successfully called.  Error message: ");
+                    console.log(errorMsg);
+                    alert("AJAX failure: could not invoke API tblVendingMachine/delete?vendingId=" + vendingObj.ID +
+                        " Ajax error: " + errorMsg);
+                }
+
+            }
+        } // deleteUser
         React.useEffect(
             () => {
 
@@ -63,10 +104,10 @@ function MakeShowVending({ titleText = "Default Vending" }) {
         );
 
         const doFilter = () => {
-            if(!filterInput || filterInput.length === 0) {
+            if (!filterInput || filterInput.length === 0) {
                 setItems(dbItems);
-                
-            }else{
+
+            } else {
                 let newItems = filterObjList(items, filterInput);
                 console.log("filter input is: " + filterInput);
                 console.log("doFilter, filterInputVal is: " + filterInput +
@@ -152,7 +193,10 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     <td>{listObj.errorMsg}</td> */}
                                     {/* <td>{listObj.ID}</td> */}
                                     {/* <td>{listObj.ticketID}</td> */}
-                                    <td><img src="assets/update.png" onClick={() => callUpdate(listObj.ID)}/></td>
+                                    <td>
+                                        <img src="assets/update.png" onClick={() => callUpdate(listObj.ID)} />
+                                        <img src="assets/delete.png" onClick={() => deleteVending(listObj, listObj.ID)} />
+                                    </td>
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter">
                                         {listObj.image ? <img src={listObj.image} /> : null}
