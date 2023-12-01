@@ -48,11 +48,17 @@ function MakeShowUsers({ titleText = "Default Title" }) {
             return newList;
         }
 
+        function deleteConfirm(userObj, indx) {
+            modalFw.confirm("Do you really want to delete " + userObj.userEmail + "? ",
+                function () {
+                    deleteUser(userObj, indx);
+                });
+        }
         function deleteUser(userObj, indx) {
 
             console.log("To delete user " + userObj.userEmail + "?");
 
-            if (confirm("Do you really want to delete " + userObj.userEmail + "? ")) {
+            // if (confirm("Do you really want to delete " + userObj.userEmail + "? ")) {
 
                 ajax_alt("webUser/delete?userId=" + userObj.webUserId, success, fail);
 
@@ -62,8 +68,10 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                     if (obj.errorMsg.length < 1) { // record actually deleted
                         console.log("Actual DB delete");
                         setItems(deleteListEle(items, indx));
+                        modalFw.snackBar("User " + userObj.userEmail + " was deleted.", 3000);
                     } else {
-                        alert("Could not delete that record. " + obj.errorMsg);
+                        modalFw.snackBar("Could not delete that record. " + obj.errorMsg, 3000);
+                        // alert("Could not delete that record. " + obj.errorMsg);
                     }
                 }
 
@@ -74,7 +82,7 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                         " Ajax error: " + errorMsg);
                 }
 
-            }
+            // }
         } // deleteUser
 
         React.useEffect(
@@ -181,7 +189,7 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                                 <tr key={listObj.webUserId}>
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.webUserId)} />
-                                        <img src="assets/delete.png" onClick={() => deleteUser(listObj, listObj.webUserId)} />
+                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, listObj.webUserId)} />
                                     </td>
                                     <td>{listObj.userEmail + ' (' + listObj.webUserId + ')'}</td>
                                     <td className="shadowImage textAlignCenter">

@@ -46,12 +46,11 @@ function MakeShowVending({ titleText = "Default Vending" }) {
             console.log(newList);
             return newList;
         }
-
         function deleteVending(vendingObj, indx) {
 
             console.log("To delete vending " + vendingObj.ID + "?");
 
-            if (confirm("Do you really want to delete vending item: " + vendingObj.ID + "? ")) {
+            // if (confirm("Do you really want to delete vending item: " + vendingObj.ID + "? ")) {
 
                 ajax_alt("tblVendingMachine/delete?vendingId=" + vendingObj.ID, success, fail);
 
@@ -60,9 +59,11 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                     console.log(obj);
                     if (obj.errorMsg.length < 1) { // record actually deleted
                         console.log("Actual DB delete");
+                        modalFw.snackBar("Vending item " + vendingObj.ID + " was deleted.", 3000);
                         setItems(deleteListEle(items, indx));
                     } else {
-                        alert("Could not delete that record. " + obj.errorMsg);
+                        modalFw.snackBar("Could not delete that record. " + obj.errorMsg, 3000);
+                        // alert("Could not delete that record. " + obj.errorMsg);
                     }
                 }
 
@@ -73,8 +74,15 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                         " Ajax error: " + errorMsg);
                 }
 
-            }
+            // }
         } // deleteUser
+        
+        function deleteConfirm(vendingObj, indx) {
+            modalFw.confirm("Do you really want to delete vending item: " + vendingObj.ID + " from user: " + vendingObj.userEmail + "? ", function() {
+                deleteVending(vendingObj, indx);
+            });
+        }
+        
         React.useEffect(
             () => {
 
@@ -195,7 +203,8 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     {/* <td>{listObj.ticketID}</td> */}
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.ID)} />
-                                        <img src="assets/delete.png" onClick={() => deleteVending(listObj, listObj.ID)} />
+                                        {/* <img src="assets/delete.png" onClick={() => deleteVending(listObj, listObj.ID)} /> */}
+                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, listObj.ID)} />
                                     </td>
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter">
