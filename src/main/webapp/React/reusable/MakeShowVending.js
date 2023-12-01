@@ -191,7 +191,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                     </thead>
                     <tbody>
                         {
-                            items.map((listObj) =>
+                            items.map((listObj,index) =>
                                 <tr key={listObj.ID}>
                                     {/* <td>{listObj.userEmail}</td>
                                     <td className="shadowImage textAlignCenter"><img src={listObj.userImage} /></td>
@@ -204,7 +204,7 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.ID)} />
                                         {/* <img src="assets/delete.png" onClick={() => deleteVending(listObj, listObj.ID)} /> */}
-                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, listObj.ID)} />
+                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, index)} />
                                     </td>
                                     <td>{listObj.ticketDate}</td>
                                     <td className="shadowImage textAlignCenter">

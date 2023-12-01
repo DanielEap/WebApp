@@ -185,11 +185,11 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                     </thead>
                     <tbody>
                         {
-                            items.map((listObj) =>
+                            items.map((listObj,index) =>
                                 <tr key={listObj.webUserId}>
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.webUserId)} />
-                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, listObj.webUserId)} />
+                                        <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, index)} />
                                     </td>
                                     <td>{listObj.userEmail + ' (' + listObj.webUserId + ')'}</td>
                                     <td className="shadowImage textAlignCenter">
