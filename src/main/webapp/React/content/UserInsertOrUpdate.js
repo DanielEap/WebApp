@@ -145,7 +145,7 @@ const UserInsertOrUpdate = (props) => {
 
                         if (action === "update") { //this is update, not insert, get webUser by the id
                             console.log("Now getting webUser record " + id + " for the update");
-                            ajax_alt("/webUser/getById?userId=" + id,
+                            ajax_alt("webUser/getById?userId=" + id,
                                 function (obj) {
                                     if (obj.errorMsg.length > 0) { // obj.errorMsg holds error, e.g., db error
                                         console.log("DB error trying to get the webUser record for udpate");

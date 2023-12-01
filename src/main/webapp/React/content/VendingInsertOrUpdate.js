@@ -163,7 +163,7 @@ const VendingInsertOrUpdate = (props) => {
 
                         if (action === "update") { //this is update, not insert, get webUser by the id
                             console.log("Now getting tblVendingMachine record " + id + " for the update");
-                            ajax_alt("/tblVendingMachine/getById?vendingId=" + id,
+                            ajax_alt("tblVendingMachine/getById?vendingId=" + id,
                                 function (obj) {
                                     if (obj.errorMsg.length > 0) { // obj.errorMsg holds error, e.g., db error
                                         console.log("DB error trying to get the tblVendingMachine record for udpate");
