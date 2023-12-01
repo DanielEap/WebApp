@@ -157,12 +157,14 @@ public class DbMods {
         }
         return sd;
     } // getById
+
     public static StringData update(StringData updateData, DbConn dbc) {
 
         StringData errorMsgs = new StringData();
         errorMsgs = validate(updateData);
 
-        // For update, we also need to check that webUserId has been supplied by the user...
+        // For update, we also need to check that webUserId has been supplied by the
+        // user...
         errorMsgs.webUserId = Validate.integerMsg(updateData.webUserId, true);
 
         if (errorMsgs.characterCount() > 0) { // at least one field has an error, don't go any further.
@@ -171,7 +173,8 @@ public class DbMods {
 
         } else { // all fields passed validation
 
-            /* Useful to know the exact field names in the database... 
+            /*
+             * Useful to know the exact field names in the database...
              * String sql =
              * "SELECT web_user_id, user_email, user_password, user_image, membership_fee, "
              * "birthday, web_user.user_role_id, user_role_type "+
@@ -179,7 +182,7 @@ public class DbMods {
              * "ORDER BY web_user_id ";
              */
 
-            String sql = "UPDATE web_user SET user_email = ?, user_password = ?, user_image = ?, "+
+            String sql = "UPDATE web_user SET user_email = ?, user_password = ?, user_image = ?, " +
                     "membership_fee = ?, birthday = ?, user_role_id = ? WHERE web_user_id = ?";
 
             // PrepStatement is Sally's wrapper class for java.sql.PreparedStatement
@@ -220,7 +223,54 @@ public class DbMods {
         return errorMsgs;
     } // update
 
+    // The return value is found in StringData.errorMsg. Even though a simple String
+    // would have been OK to communicate failure (error message) or success (empty
+    // string),
+    // we pass back a StringData object because our ajax function assumes it's
+    // getting the
+    // JSON of some object (not just a simple String).
+    public static StringData delete(DbConn dbc, String userId) {
 
+        StringData sd = new StringData();
 
+        if (userId == null) {
+            sd.errorMsg = "modelwebUser.DbMods.delete: " +
+                    "cannot delete web_user record because 'userId' is null";
+            return sd;
+        }
+
+        sd.errorMsg = dbc.getErr();
+        if (sd.errorMsg.length() > 0) { // cannot proceed, db error
+            return sd;
+        }
+
+        try {
+
+            String sql = "DELETE FROM web_user WHERE web_user_id = ?";
+
+            // Compile the SQL (checking for syntax errors against the connected DB).
+            PreparedStatement pStatement = dbc.getConn().prepareStatement(sql);
+
+            // Encode user data into the prepared statement.
+            pStatement.setString(1, userId);
+
+            int numRowsDeleted = pStatement.executeUpdate();
+
+            if (numRowsDeleted == 0) {
+                sd.errorMsg = "Record not deleted - there was no record with web_user_id " + userId;
+            } else if (numRowsDeleted > 1) {
+                sd.errorMsg = "Programmer Error: > 1 record deleted. Did you forget the WHERE clause?";
+            }
+
+        } catch (Exception e) {
+            if(e.getMessage().contains("foreign key")) {
+                sd.errorMsg = "Cannot delete web user because of foreign keys. This user likely has a vending record" + e.getMessage();
+            } else {
+                sd.errorMsg = "Exception thrown in model.webUser.DbMods.delete(): " + e.getMessage();
+            }
+        }
+
+        return sd;
+    }
 
 }
