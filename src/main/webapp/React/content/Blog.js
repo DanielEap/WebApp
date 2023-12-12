@@ -156,6 +156,14 @@ about this module (LA and HW) */}
                     it is to update. Implementing the modal was also great practice and a good learning experience.
                 </p>
             </div>
+            <div id="Final">
+                <h3>Final Project</h3>
+                <p>
+                    Thanks for the great semester!
+                    Attached is the document for the project final assignment.
+                    Click <a target="_blank" href="assets/Final Project Document.pdf">here</a> to see the document.
+                </p>
+            </div>
         </div>
     );
 }
