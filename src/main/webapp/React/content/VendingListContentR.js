@@ -10,16 +10,23 @@ function VendingListContentR() {
         {},
         {},
     ]
-    ReactDOM.render(
-        <MakeVendingListR vendingList={FoodVendingList} title="Food Vending List" image="pics/FoodVending/apple.jpg" />,
-        document.getElementById("react1")
-    );
-    ReactDOM.render(
-        <MakeVendingListR vendingList={test1VendingList} />,
-        document.getElementById("react2")
-    );
-    ReactDOM.render(
-        <MakeVendingListR />,
-        document.getElementById("react3")
+    // ReactDOM.render(
+    //     <MakeVendingListR vendingList={FoodVendingList} title="Food Vending List" image="pics/FoodVending/apple.jpg" />,
+    //     document.getElementById("react1")
+    // );
+    // ReactDOM.render(
+    //     <MakeVendingListR vendingList={test1VendingList} />,
+    //     document.getElementById("react2")
+    // );
+    // ReactDOM.render(
+    //     <MakeVendingListR />,
+    //     document.getElementById("react3")
+    // );
+    return (
+        <div>
+            <MakeVendingListR vendingList={FoodVendingList} title="Food Vending List" image="pics/FoodVending/apple.jpg" />
+            <MakeVendingListR vendingList={test1VendingList} />
+            <MakeVendingListR />
+        </div>
     );
 }
