@@ -36,7 +36,11 @@ function MakeVendingListR({ vendingList = null, title = "Vending Listing", image
                 <div className="vendingInfoClass" ref={vendingInfo}></div>
                 <div className="coordinatesClass">
                     <p>Latitude: {latitude}</p>
+                    <button onClick={() => setLatitude(latitude + 1)}>Increase Latitude</button>
+                    <button onClick={() => setLatitude(latitude - 1)}>Decrease Latitude</button>
                     <p>Longitude: {longitude}</p>
+                    <button onClick={() => setLongitude(longitude + 1)}>Increase Longitude</button>
+                    <button onClick={() => setLongitude(longitude - 1)}>Decrease Longitude</button>
                 </div>
                 <p>Description: {description}</p>
                 <div className="reviewClass" onClick={() => { setShowReview(!showReview) }}>

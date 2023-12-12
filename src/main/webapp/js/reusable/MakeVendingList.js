@@ -25,8 +25,12 @@ function MakeVendingList({vendingList=null, title="Vending Listing",image="pics/
             <div class="vendingInfoClass"></div>
           
             <div class="coordinatesClass">
-                <p>Latitude: ${latitude}</p>
-                <p>Longitude: ${longitude}</p>
+                <p>Latitude: <span id="latitude">${latitude}</span></p>
+                <button class="latitudeAdd">Increase Latitude</button>
+                <button class="latitudeSubtract">Decrease Latitude</button>
+                <p>Longitude: <span id="longitude">${longitude}</span></p>
+                <button class="longitudeAdd">Increase Longitude</button>
+                <button class="longitudeSubtract">Decrease Longitude</button>
             </div>
             <p>Description: ${description}</p>
             <div class="reviewClass"> Click to show review
@@ -37,7 +41,11 @@ function MakeVendingList({vendingList=null, title="Vending Listing",image="pics/
         var vendingInfo = vendingObj.getElementsByClassName("vendingInfoClass")[0];
         var reviewClass = vendingObj.getElementsByClassName("reviewClass")[0];
         var reviewClassShow = vendingObj.getElementsByClassName("reviewClassShow")[0];
-      
+        var latitudeAdd = vendingObj.getElementsByClassName("latitudeAdd")[0];
+        var latitudeSubtract = vendingObj.getElementsByClassName("latitudeSubtract")[0];
+        var longitudeAdd = vendingObj.getElementsByClassName("longitudeAdd")[0];
+        var longitudeSubtract = vendingObj.getElementsByClassName("longitudeSubtract")[0];
+
         var display = function(){
             vendingInfo.innerHTML = `
             <img src="${vendingImage}" alt="Vending Image">
@@ -51,6 +59,23 @@ function MakeVendingList({vendingList=null, title="Vending Listing",image="pics/
                 reviewClassShow.style.display = "none";
             }
         }
+        latitudeAdd.onclick = function(){
+            latitude++;
+            vendingObj.querySelector("#latitude").innerHTML = latitude;
+        }
+        latitudeSubtract.onclick = function(){
+            latitude--;
+            vendingObj.querySelector("#latitude").innerHTML = latitude;
+        }
+        longitudeAdd.onclick = function(){
+            longitude++;
+            vendingObj.querySelector("#longitude").innerHTML = longitude;
+        }
+        longitudeSubtract.onclick = function(){
+            longitude--;
+            vendingObj.querySelector("#longitude").innerHTML = longitude;
+        }
+
         console.log(typeof(vendingObj));
         return vendingObj;
     }

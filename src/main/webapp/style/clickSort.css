@@ -3,30 +3,42 @@
 }
 
 .clickSort table {
-    margin: auto; /* auto makes left and right margins the same, means centered */
-    margin-top: 1rem; /* rem means size of capital M at the root */
+    margin: auto;
+    /* auto makes left and right margins the same, means centered */
+    margin-top: 1rem;
+    /* rem means size of capital M at the root */
     text-align: left;
+    background-color: black;
+    /* border-collapse: collapse; */
+    border: 0.5rem solid #0b7348;
+    border-radius: 0.5rem;
+    /* overflow: hidden; */
+
 }
-.clickSort #add{
+
+.clickSort #add {
     width: 1.5rem;
     position: relative;
     top: 0.25rem;
 }
 
-.clickSort th { /* style of td elements that are inside of a thead element */
+.clickSort th {
+    /* style of td elements that are inside of a thead element */
     padding: 0.25rem;
     padding-top: 0.5rem;
-    background-color: #E0E0D0; 
+    background-color: #108558;
     font-weight: bold;
     font-size: 1.1rem;
+    border: 0.25rem solid #108558;
     text-align: left;
     white-space: nowrap;
 }
 
-.clickSort th img { /* style of img tags in th tags in elements classed clickSort */
-    width:1.25rem;
+.clickSort th img {
+    /* style of img tags in th tags in elements classed clickSort */
+    width: 1.25rem;
     position: relative;
-    top:0.2rem;
+    top: 0.2rem;
 }
 
 .clickSort td {
@@ -54,5 +66,59 @@
 }
 
 .clickSort .nowrap {
-    white-space:nowrap;
+    white-space: nowrap;
+}
+
+@media only screen and (max-width: 600px) {
+
+    /* Make table cells stack on top of each other */
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    /* Hide table header */
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    /* Style table rows */
+    tr {
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+
+    /* Style table cells */
+    td {
+        border: none;
+        position: relative;
+        padding-left: 10px;
+        /* Adjust padding as needed */
+        text-align: left;
+        /* Align text to the left */
+    }
+    .clickSort .textAlignRight {
+        text-align: left;
+    }
+    
+    .clickSort .textAlignCenter {
+        text-align: left;
+    }
+
+    /* Style table cells content */
+    td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        font-weight: bold;
+    }
 }

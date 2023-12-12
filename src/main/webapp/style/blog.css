@@ -18,3 +18,10 @@ To follow the CSS naming convention,
 .blog h4 { /* applies to any "h2" tag that's in an "obj" dom element */
     color:maroon;
 }
+#Map {
+    width: 20%;
+    height: 20%;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    float: right;
+}

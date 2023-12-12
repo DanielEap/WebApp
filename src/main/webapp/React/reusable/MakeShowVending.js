@@ -155,13 +155,14 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                 <img id="add" src="assets/insert.png" onClick={callInsert} />
                 <h3> (Sortable) Vending List
                     <input value={filterInput} onChange={(e) => setFilterInput(e.target.value)} />
-                    &nbsp; <button onClick={() => doFilter()}>Search</button>
+                    &nbsp;
+                    <button onClick={() => doFilter()}>Search</button>
                 </h3>
                 <table>
                     <thead>
                         <tr>
                             <th>
-                                Edit Vending
+                                Edit
                             </th>
                             <th onClick={() => sortByProp("ticketDate", "date")}>
                                 <img src="assets/sortDown.png" />Ticket Date
@@ -203,6 +204,8 @@ function MakeShowVending({ titleText = "Default Vending" }) {
                                     {/* <td>{listObj.ticketID}</td> */}
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.ID)} />
+                                        &nbsp;
+                                        &nbsp;
                                         {/* <img src="assets/delete.png" onClick={() => deleteVending(listObj, listObj.ID)} /> */}
                                         <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, index)} />
                                     </td>

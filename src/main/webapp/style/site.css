@@ -81,7 +81,7 @@ body {
 
 }
 
-#root img {
+/* #root img {
   
     width: 20%;
     height: 20%;
@@ -89,6 +89,13 @@ body {
     padding: 0.75rem;
 
 
+} */
+#Vending {
+    width: 20%;
+    height: 20%;
+    border-radius: 0.5rem;
+    padding: 0.75rem;
+    float: right;
 }
 
 #footer {
@@ -107,9 +114,7 @@ body {
     padding: 0.5rem;
 }
 
-#Vending {
-    float: right;
-}
+
 
 #ReactComponents{
     padding: 1rem;
@@ -123,9 +128,7 @@ body {
     margin-bottom: 2.5rem;
     font-size: 1.2rem;
 }
-#Map {
-    float: right;
-}
+
 
 /* desktop only */
 @media only screen and (min-width: 40rem) {

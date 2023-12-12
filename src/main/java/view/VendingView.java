@@ -24,7 +24,7 @@ public class VendingView {
         try {
             String sql = "SELECT ID,  ticketDate, image, latitude, longitude, description, acceptsBillsAndCoins, acceptsEPayments, review, web_user.web_user_id, vending_type.vending_type_id, vending_type_desc, user_email "
                     + "FROM tblVendingMachine, web_user, vending_type where tblVendingMachine.web_user_id = web_user.web_user_id and tblVendingMachine.vending_type_id = vending_type.vending_type_id "
-                    + "ORDER BY ID";  // always order by something, not just random order.
+                    + "ORDER BY ticketDate";  // always order by something, not just random order.
             
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
             ResultSet results = stmt.executeQuery();

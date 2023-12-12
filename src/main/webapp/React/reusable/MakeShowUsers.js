@@ -163,7 +163,7 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                     <thead>
                         <tr>
                             <th>
-                                Edit User
+                                Edit
                             </th>
                             <th onClick={() => sortByProp("userEmail", "text")} >
                                 <img src="assets/sortDown.png" />Email
@@ -189,6 +189,8 @@ function MakeShowUsers({ titleText = "Default Title" }) {
                                 <tr key={listObj.webUserId}>
                                     <td>
                                         <img src="assets/update.png" onClick={() => callUpdate(listObj.webUserId)} />
+                                        &nbsp;
+                                        &nbsp;
                                         <img src="assets/delete.png" onClick={() => deleteConfirm(listObj, index)} />
                                     </td>
                                     <td>{listObj.userEmail + ' (' + listObj.webUserId + ')'}</td>

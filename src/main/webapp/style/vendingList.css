@@ -18,8 +18,8 @@
 }
 
 .vendingList .vending img {
-    width:10% ;
-    height: 10% ;
+    width:10% !important ;
+    height: 10% !important;
     float:right ;
 }
 .vendingList .vending {

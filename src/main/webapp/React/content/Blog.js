@@ -23,6 +23,7 @@ function Blog() {
                     <li>isBillsAndCoins, tinyint/int, (boolean)</li>
                     <li>acceptsEPayments,tinyint/int, (boolean)</li>
                     <li>Review, int, (out 5 stars basically) , NULLABLE</li>
+                    <li>webuser_id, int, FK</li>
                 </ul>
                 <br />
                 <br />
@@ -140,11 +141,19 @@ about this module (LA and HW) */}
             <div id="Update_HW">
                 <h3>Update HW Blog</h3>
                 <p>
-                    This week was very quick and easy to complete. The lab covered a lot of the code that needed 
+                    This week was very quick and easy to complete. The lab covered a lot of the code that needed
                     to be done for the homework. Since it was also similar to the insert homework, it was very easy
                     to just reuse code and make the necessary changes. The only thing that took some time was that I had
                     to fix my previous work to make sure that everything was functioning correctly. I had to make sure the
                     error messages were displaying correctly.
+                </p>
+            </div>
+            <div id="Delete_HW">
+                <h3>Delete HW Blog</h3>
+                <p>
+                    This week was the easiest module yet. It took no more than 30 minutes to complete as it was just implementing code 
+                    reflecting the update code to become delete. Not having lab this week was also nice and a good decision because of similar
+                    it is to update. Implementing the modal was also great practice and a good learning experience.
                 </p>
             </div>
         </div>
